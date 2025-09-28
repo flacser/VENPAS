@@ -961,37 +961,27 @@
                 // Calcular semana del mes (1-5)
                 const week = Math.ceil(day / 7);
                 // Solo guardar si es después de las 16:48
-                if (hour < 10 || (hour === 10 && minute < 10)) return;
+                if (hour < 10 || (hour === 10 && minute < 32)) return;
                 // ID de documento para el día
-                const dayId = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                const dayId = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                 // Referencia a Firestore
                 const resumenRef = db.collection('historial').doc(`${year}`).collection(`${month}`).doc(`sem${week}`).collection('dias').doc(dayId);
                 // Verificar si ya existe
                 const doc = await resumenRef.get();
                 if (doc.exists) return; // Ya guardado
-                // Forzar recarga de datos desde Firestore antes de calcular totales
+
+                // Forzar recarga y actualización de totales
                 await loadProductQuantities(document.getElementById('manana-view'));
                 await loadProductQuantities(document.getElementById('tarde-view'));
-                // Esperar un pequeño tiempo para que el DOM se actualice
                 await new Promise(res => setTimeout(res, 300));
-                // Forzar recálculo de totales en ambas vistas
                 updateViewTotals(document.getElementById('manana-view'));
                 updateViewTotals(document.getElementById('tarde-view'));
-                function getTotalGananciaFromView(viewElement) {
-                    const totalGananciaSpan = viewElement.querySelector('.total-ganancia');
-                    if (!totalGananciaSpan) return 0;
-                    // Extraer número de texto tipo "Q123.45"
-                    const match = totalGananciaSpan.textContent.match(/Q([\d.,]+)/);
-                    if (match) {
-                        // Reemplazar coma por nada y punto por punto decimal
-                        return parseFloat(match[1].replace(/,/g, '')) || 0;
-                    }
-                    return 0;
-                }
-                const mananaGanancia = getTotalGananciaFromView(document.getElementById('manana-view'));
-                const tardeGanancia = getTotalGananciaFromView(document.getElementById('tarde-view'));
-                const totalGanancia = mananaGanancia + tardeGanancia;
-                // Guardar solo la ganancia en Firestore
+
+                // Usar la misma lógica que el modal "Resumen"
+                const mananaTotals = updateViewTotals(document.getElementById('manana-view'));
+                const tardeTotals = updateViewTotals(document.getElementById('tarde-view'));
+                const totalGanancia = mananaTotals.totalGanancia + tardeTotals.totalGanancia;
+
                 await resumenRef.set({
                     year,
                     month,
@@ -1302,6 +1292,4 @@
     </script>
 </body>
 </html>
-
-
 
