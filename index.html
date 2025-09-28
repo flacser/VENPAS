@@ -882,7 +882,7 @@
                             }
                         }
                     }
-                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:0, maximumFractionDigits:2})}`;
                 }
             }
 
@@ -901,7 +901,7 @@
                             if (data && data.totalGanancia) total += data.totalGanancia;
                         }
                     }
-                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:0, maximumFractionDigits:2})}`;
                 }
             }
 
@@ -918,7 +918,7 @@
                         const data = diaDoc.data();
                         if (data && data.totalGanancia) total += data.totalGanancia;
                     }
-                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:0, maximumFractionDigits:2})}`;
                 }
             }
 
@@ -938,7 +938,7 @@
                     if (doc.exists && doc.data().totalGanancia) {
                         total = doc.data().totalGanancia;
                     }
-                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+                    item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', {minimumFractionDigits:0, maximumFractionDigits:2})}`;
                 }
             }
 
