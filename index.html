@@ -956,7 +956,7 @@
                 // Calcular semana del mes (1-5)
                 const week = Math.ceil(day / 7);
                 // Solo guardar si es después de las 16:48
-                if (hour < 16 || (hour === 16 && minute < 48)) return;
+                if (hour < 18 || (hour === 18 && minute < 18)) return;
                 // ID de documento para el día
                 const dayId = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
                 // Referencia a Firestore
@@ -969,6 +969,9 @@
                 await loadProductQuantities(document.getElementById('tarde-view'));
                 // Esperar un pequeño tiempo para que el DOM se actualice
                 await new Promise(res => setTimeout(res, 300));
+                // Forzar recálculo de totales en ambas vistas
+                updateViewTotals(document.getElementById('manana-view'));
+                updateViewTotals(document.getElementById('tarde-view'));
                 function getTotalGananciaFromView(viewElement) {
                     const totalGananciaSpan = viewElement.querySelector('.total-ganancia');
                     if (!totalGananciaSpan) return 0;
