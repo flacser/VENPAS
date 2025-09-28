@@ -961,7 +961,7 @@
                 // Calcular semana del mes (1-5)
                 const week = Math.ceil(day / 7);
                 // Solo guardar si es después de las 16:48
-                if (hour < 18 || (hour === 18 && minute < 18)) return;
+                if (hour < 10 || (hour === 10 && minute < 10)) return;
                 // ID de documento para el día
                 const dayId = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
                 // Referencia a Firestore
@@ -1302,5 +1302,6 @@
     </script>
 </body>
 </html>
+
 
 
