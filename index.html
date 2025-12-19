@@ -933,10 +933,10 @@
             <div class="modal-content text-white flex flex-col items-center">
                 <h2 class="text-2xl font-bold mb-4">¿Deseas guardar los datos?</h2>
                 <p class="text-sm text-gray-400 mb-8 text-center">Si ya había datos guardados del día de hoy, se
-                    reiniciarán por los datos actuales.</p>
+                    reemplazarán por los datos actuales.</p>
                 <div class="flex gap-4">
                     <button id="confirm-save-btn"
-                        class="px-6 py-2 rounded-full font-medium simple-blue-btn transition duration-300">
+                        class="px-6 py-2 rounded-full font-medium bg-[#c3ff3d] text-black transition duration-300">
                         Guardar
                     </button>
                     <button id="cancel-save-btn"
@@ -953,9 +953,9 @@
         <div class="modal-container">
             <div class="modal-content text-white flex flex-col items-center">
                 <h2 class="text-2xl font-bold mb-4">¿Deseas borrar los datos?</h2>
-                <p class="text-sm text-gray-400 mb-8 text-center">Se borrarán las cantidades de la tabla actual y esta acción no es reversible.</p>
+                <p class="text-sm text-gray-400 mb-8 text-center">Se borrarán las cantidades de la tabla actual. Esta acción no se puede deshacer.</p>
                 <div class="flex gap-4">
-                    <button id="confirm-delete-btn" class="px-6 py-2 rounded-full font-medium bg-red-700 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">
+                    <button id="confirm-delete-btn" class="px-6 py-2 rounded-full font-medium bg-[#fc3dff] text-black focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">
                         Borrar
                     </button>
                     <button id="cancel-delete-btn" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600 transition duration-300">
@@ -1568,4 +1568,5 @@
 </body>
 
 </html>
+
 
