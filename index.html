@@ -32,6 +32,7 @@
 
         input[type="number"] {
             -moz-appearance: textfield;
+            appearance: textfield;
         }
 
         /* Animación para el efecto de carga del subtotal y ganancia */
@@ -177,6 +178,206 @@
 
         .simple-blue-btn:hover {
             background-color: #0099ab;
+        }
+
+        .readonly-cantidad {
+            cursor: not-allowed;
+            color: #9ca3af;
+            border-color: #4b5563;
+            background-color: #111827;
+        }
+
+        .french-controls {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.2rem;
+            margin: 0 auto;
+        }
+
+        .mini-plus-btn {
+            width: 2.35rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+            border: 1px solid #9ca3af;
+            background-color: #111827;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            right: -1.05rem;
+            z-index: 4;
+            font-size: 1rem;
+            padding: 0 0.2rem;
+        }
+
+        .mini-plus-btn span {
+            transform: none;
+        }
+
+        .mini-plus-btn:hover {
+            background-color: #1f2937;
+        }
+
+        .subproducts-popover {
+            position: absolute;
+            top: calc(100% + 0.45rem);
+            right: -1.5rem;
+            z-index: 30;
+            width: 230px;
+            background-color: #000000;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            padding: 0.4rem 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .french-controls .cantidad-input {
+            position: relative;
+            z-index: 6;
+        }
+
+        .subproducts-popover.hidden {
+            display: none;
+        }
+
+        .subproduct-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            font-size: 1.125rem;
+            color: #fff;
+            padding: 0.45rem 0;
+        }
+
+        .subproduct-row + .subproduct-row {
+            border-top: 1px solid #4b5563;
+        }
+
+        .subproduct-input {
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            background-color: #111827;
+            color: #fff;
+            border-radius: 9999px;
+            border: 1px solid #6b7280;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        /* Aviso primera visita: subdivisión Francés */
+        .frances-tip-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 198;
+            background-color: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(2px);
+        }
+
+        .frances-feature-tip {
+            position: fixed;
+            z-index: 199;
+            max-width: min(300px, calc(100vw - 24px));
+            pointer-events: auto;
+            padding-top: 6px;
+        }
+
+        .frances-feature-tip-inner {
+            background-color: #000000;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            padding: 1rem 1rem 0.85rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .frances-feature-tip-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .frances-tip-fake-qty {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: #111827;
+            border: 1px solid #4b5563;
+            position: relative;
+            z-index: 2;
+        }
+
+        .frances-tip-fake-plus {
+            width: 2.35rem;
+            height: 1.65rem;
+            border-radius: 0.5rem;
+            border: 1px solid #9ca3af;
+            background-color: #111827;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .frances-feature-tip-msg {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.35;
+            color: #fff;
+            margin-bottom: 0.85rem;
+        }
+
+        .frances-tip-dismiss-btn {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            background-color: #c3ff3d;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+        }
+
+        .frances-tip-dismiss-btn:hover {
+            filter: brightness(1.05);
+        }
+
+        .frances-feature-tip-arrow {
+            position: absolute;
+            top: 2px;
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 9px solid #4b5563;
+        }
+
+        .frances-feature-tip-arrow::after {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 1px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #000000;
         }
     </style>
 </head>
@@ -325,12 +526,25 @@
 
                 <!-- Producto 5 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3">
+                    data-profit-multiplier="3" data-has-subproducts="true">
                     <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span>
                     <span class="text-left">Francés</span>
                     <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
+                        <div class="french-controls">
+                            <input type="number" placeholder="" min="0" readonly
+                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
+                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
+                            <div class="subproducts-popover hidden">
+                                <div class="subproduct-row">
+                                    <span>Piso</span>
+                                    <input type="number" min="0" class="subproduct-input subproduct-piso" />
+                                </div>
+                                <div class="subproduct-row">
+                                    <span>Lata</span>
+                                    <input type="number" min="0" class="subproduct-input subproduct-lata" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
                     <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
@@ -366,7 +580,7 @@
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
                     data-profit-multiplier="5">
                     <span class="text-center precio-item text-base precio-col" data-price="3.75">Q3.75</span>
-                    <span class="text-left">Filas de Galleta</span>
+                    <span class="text-left">Filas de galleta</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
                             class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
@@ -377,8 +591,8 @@
 
                 <!-- Producto 9 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="10">
-                    <span class="text-center precio-item text-base precio-col" data-price="7.50">Q7.50</span>
+                    data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
                     <span class="text-left">Champurradas</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
@@ -390,9 +604,9 @@
 
                 <!-- Producto 10 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="10">
-                    <span class="text-center precio-item text-base precio-col" data-price="7.50">Q7.50</span>
-                    <span class="text-left">Champurradas Integrales</span>
+                    data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
+                    <span class="text-left">Champurradas integrales</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
                             class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
@@ -469,7 +683,7 @@
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
                     data-profit-multiplier="2">
                     <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Panes grandes</span>
+                    <span class="text-left">Pan grande</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
                             class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
@@ -545,12 +759,25 @@
 
                 <!-- Producto 10 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3">
+                    data-profit-multiplier="3" data-has-subproducts="true">
                     <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span>
                     <span class="text-left">Francés</span>
                     <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
+                        <div class="french-controls">
+                            <input type="number" placeholder="" min="0" readonly
+                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
+                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
+                            <div class="subproducts-popover hidden">
+                                <div class="subproduct-row">
+                                    <span>Piso</span>
+                                    <input type="number" min="0" class="subproduct-input subproduct-piso" />
+                                </div>
+                                <div class="subproduct-row">
+                                    <span>Lata</span>
+                                    <input type="number" min="0" class="subproduct-input subproduct-lata" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
                     <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
@@ -727,8 +954,8 @@
 
                 <!-- Producto 24 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="10">
-                    <span class="text-center precio-item text-base precio-col" data-price="7.50">Q7.50</span>
+                    data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
                     <span class="text-left">Champurradas</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
@@ -740,9 +967,9 @@
 
                 <!-- Producto 25 -->
                 <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="10">
-                    <span class="text-center precio-item text-base precio-col" data-price="7.50">Q7.50</span>
-                    <span class="text-left">Champurradas Integrales</span>
+                    data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
+                    <span class="text-left">Champurradas integrales</span>
                     <div class="flex justify-center">
                         <input type="number" placeholder="" min="1"
                             class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
@@ -1001,17 +1228,31 @@
         </div>
     </div>
 
+    <!-- Aviso primera visita: subdivisión del pan Francés -->
+    <div id="frances-tip-backdrop" class="frances-tip-backdrop hidden" aria-hidden="true"></div>
+    <div id="frances-feature-tip" class="frances-feature-tip hidden" role="dialog" aria-labelledby="frances-tip-title">
+        <div class="frances-feature-tip-arrow" aria-hidden="true"></div>
+        <div class="frances-feature-tip-inner">
+            <div class="frances-feature-tip-preview">
+                <span class="frances-tip-fake-qty"></span>
+                <span class="frances-tip-fake-plus"><span>+</span></span>
+            </div>
+            <p id="frances-tip-title" class="frances-feature-tip-msg">¡Ahora el pan Francés tiene subdivisiones! Usa el botón <strong>+</strong> junto a la cantidad.</p>
+            <button type="button" id="frances-tip-dismiss" class="frances-tip-dismiss-btn">Entendido</button>
+        </div>
+    </div>
+
     <script>
 
         // --- INICIO: Configuración e inicialización de Firebase ---
             const firebaseConfig = {
-                apiKey: "AIzaSyC_Mduafww-kwV7yIFEvcoEE9GnYjBH4Gc",
-                authDomain: "visualprueba2.firebaseapp.com",
-                projectId: "visualprueba2",
-                storageBucket: "visualprueba2.firebasestorage.app",
-                messagingSenderId: "637609680539",
-                appId: "1:637609680539:web:b27485e3d28f666944303e",
-                measurementId: "G-GKJYL45Z2M"
+                apiKey: "AIzaSyC_Mduafww-fdsfs",
+                authDomain: "visualprueba2.fsfs.com",
+                projectId: "fdfd",
+                storageBucket: "visualprueba2.gdsa.app",
+                messagingSenderId: "ted",
+                appId: "1:637609680539:web:fdsa",
+                measurementId: "G-thg3"
             };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
@@ -1031,7 +1272,17 @@
             const data = {};
             rows.forEach((row, idx) => {
                 const input = row.querySelector('.cantidad-input');
-                if (input && input.value !== "") {
+                const hasSubproducts = row.dataset.hasSubproducts === 'true';
+                if (hasSubproducts) {
+                    const pisoInput = row.querySelector('.subproduct-piso');
+                    const lataInput = row.querySelector('.subproduct-lata');
+                    const piso = Number(pisoInput?.value || 0);
+                    const lata = Number(lataInput?.value || 0);
+                    const total = piso + lata;
+                    if (total > 0 || (pisoInput?.value !== "" || lataInput?.value !== "")) {
+                        data[idx] = { total, piso, lata };
+                    }
+                } else if (input && input.value !== "") {
                     data[idx] = Number(input.value);
                 } // Si está vacío, no se guarda nada para ese índice
             });
@@ -1052,14 +1303,36 @@
                     const rows = viewElement.querySelectorAll('.product-row');
                     rows.forEach((row, idx) => {
                         const input = row.querySelector('.cantidad-input');
+                        const hasSubproducts = row.dataset.hasSubproducts === 'true';
                         if (input) {
-                            if (data[idx] === undefined || data[idx] === null || data[idx] === "") {
-                                input.value = "";
+                            if (hasSubproducts) {
+                                const pisoInput = row.querySelector('.subproduct-piso');
+                                const lataInput = row.querySelector('.subproduct-lata');
+                                const savedValue = data[idx];
+                                if (savedValue && typeof savedValue === 'object') {
+                                    pisoInput.value = savedValue.piso > 0 ? savedValue.piso : "";
+                                    lataInput.value = savedValue.lata > 0 ? savedValue.lata : "";
+                                    input.value = savedValue.total > 0 ? savedValue.total : "";
+                                } else if (typeof savedValue === 'number') {
+                                    // Compatibilidad con datos antiguos donde Francés era un solo input
+                                    pisoInput.value = savedValue > 0 ? savedValue : "";
+                                    lataInput.value = "";
+                                    input.value = savedValue > 0 ? savedValue : "";
+                                } else {
+                                    pisoInput.value = "";
+                                    lataInput.value = "";
+                                    input.value = "";
+                                }
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
                             } else {
-                                input.value = data[idx];
+                                if (data[idx] === undefined || data[idx] === null || data[idx] === "") {
+                                    input.value = "";
+                                } else {
+                                    input.value = data[idx];
+                                }
+                                // Disparar evento input para actualizar subtotales
+                                input.dispatchEvent(new Event('input', { bubbles: true }));
                             }
-                            // Disparar evento input para actualizar subtotales
-                            input.dispatchEvent(new Event('input', { bubbles: true }));
                         }
                     });
                 }
@@ -1212,6 +1485,112 @@
 
             const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
+            const FRANCES_TIP_STORAGE_KEY = 'mdj-frances-subproductos-tip-v1';
+
+            const getVisibleFrenchPlusBtn = () => {
+                if (!mananaView.classList.contains('hidden')) {
+                    return mananaView.querySelector('.french-controls .toggle-subproductos-btn');
+                }
+                if (!tardeView.classList.contains('hidden')) {
+                    return tardeView.querySelector('.french-controls .toggle-subproductos-btn');
+                }
+                return null;
+            };
+
+            const hideFrancesFeatureTipWithoutPersist = () => {
+                const b = document.getElementById('frances-tip-backdrop');
+                const t = document.getElementById('frances-feature-tip');
+                if (b) b.classList.add('hidden');
+                if (t) t.classList.add('hidden');
+            };
+
+            const dismissFrancesFeatureTip = () => {
+                try {
+                    localStorage.setItem(FRANCES_TIP_STORAGE_KEY, '1');
+                } catch (e) {
+                    /* ignore */
+                }
+                hideFrancesFeatureTipWithoutPersist();
+            };
+
+            const positionFrancesFeatureTip = () => {
+                const backdrop = document.getElementById('frances-tip-backdrop');
+                const tip = document.getElementById('frances-feature-tip');
+                if (!backdrop || !tip) return;
+                try {
+                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
+                } catch (e) {
+                    return;
+                }
+                const btn = getVisibleFrenchPlusBtn();
+                if (!btn) {
+                    hideFrancesFeatureTipWithoutPersist();
+                    return;
+                }
+                const rect = btn.getBoundingClientRect();
+                const maxW = Math.min(300, window.innerWidth - 24);
+                tip.style.width = `${maxW}px`;
+                let left = rect.left + rect.width / 2 - maxW / 2;
+                left = Math.max(12, Math.min(window.innerWidth - maxW - 12, left));
+                const top = rect.bottom + 14;
+                tip.style.left = `${left}px`;
+                tip.style.top = `${top}px`;
+                const arrow = tip.querySelector('.frances-feature-tip-arrow');
+                if (arrow) {
+                    const btnCenter = rect.left + rect.width / 2;
+                    let arrowLeft = btnCenter - left - 9;
+                    arrowLeft = Math.max(18, Math.min(maxW - 36, arrowLeft));
+                    arrow.style.left = `${arrowLeft}px`;
+                }
+                backdrop.classList.remove('hidden');
+                tip.classList.remove('hidden');
+            };
+
+            const maybeShowFrancesFeatureTipAfterMainView = () => {
+                try {
+                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
+                } catch (e) {
+                    return;
+                }
+                positionFrancesFeatureTip();
+            };
+
+            const computeAndRenderRowTotals = (row, cantidad) => {
+                const precioItem = row.querySelector('.precio-item');
+                const subtotalItem = row.querySelector('.subtotal-item');
+                const gananciaItem = row.querySelector('.ganancia-item');
+                const precio = parseFloat(precioItem.dataset.price);
+                const subtotal = cantidad * precio;
+                let ganancia = 0;
+                if (row.dataset.profitMultiplier) {
+                    const profitMultiplier = parseFloat(row.dataset.profitMultiplier);
+                    ganancia = (cantidad * profitMultiplier) - subtotal;
+                } else {
+                    ganancia = subtotal * 0.20;
+                }
+                subtotalItem.textContent = `Q${subtotal.toLocaleString('es-GT')}`;
+                subtotalItem.dataset.subtotal = subtotal;
+                gananciaItem.textContent = `Q${ganancia.toLocaleString('es-GT')}`;
+                gananciaItem.dataset.ganancia = ganancia;
+            };
+
+            const recalculateFrenchRow = (row) => {
+                const totalInput = row.querySelector('.cantidad-input');
+                const pisoInput = row.querySelector('.subproduct-piso');
+                const lataInput = row.querySelector('.subproduct-lata');
+                const piso = parseFloat(pisoInput.value) || 0;
+                const lata = parseFloat(lataInput.value) || 0;
+                const total = piso + lata;
+                totalInput.value = total > 0 ? total : "";
+                computeAndRenderRowTotals(row, total);
+                const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
+                updateViewTotals(activeView);
+                const viewElement = row.closest('#manana-view, #tarde-view');
+                if (viewElement) {
+                    saveProductQuantities(viewElement);
+                }
+            };
+
             const updateViewTotals = (viewElement) => {
                 let totalSubtotal = 0;
                 let totalGanancia = 0;
@@ -1273,11 +1652,14 @@
                     if (button === btnManana) {
                         mananaView.classList.remove('hidden');
                         updateViewTotals(mananaView);
+                        maybeShowFrancesFeatureTipAfterMainView();
                     } else if (button === btnTarde) {
                         tardeView.classList.remove('hidden');
                         updateViewTotals(tardeView);
+                        maybeShowFrancesFeatureTipAfterMainView();
                     } else if (button === btnHistorial) {
                         yearView.classList.remove('hidden');
+                        hideFrancesFeatureTipWithoutPersist();
                     }
                 }, 500); // Muestra el spinner por 0.5 segundos
             };
@@ -1299,10 +1681,52 @@
                 activateButton(btnHistorial);
             });
 
+            const francesTipDismiss = document.getElementById('frances-tip-dismiss');
+            const francesTipBackdropEl = document.getElementById('frances-tip-backdrop');
+            const francesFeatureTipEl = document.getElementById('frances-feature-tip');
+            if (francesTipDismiss) {
+                francesTipDismiss.addEventListener('click', dismissFrancesFeatureTip);
+            }
+            if (francesTipBackdropEl) {
+                francesTipBackdropEl.addEventListener('click', dismissFrancesFeatureTip);
+            }
+            if (francesFeatureTipEl) {
+                francesFeatureTipEl.addEventListener('click', (e) => e.stopPropagation());
+            }
+
+            window.addEventListener('resize', () => {
+                if (!francesFeatureTipEl || francesFeatureTipEl.classList.contains('hidden')) return;
+                try {
+                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
+                } catch (e) {
+                    return;
+                }
+                positionFrancesFeatureTip();
+            });
+
             mainContainer.addEventListener('input', (event) => {
+                if (event.target.classList.contains('subproduct-input')) {
+                    const currentRow = event.target.closest('.product-row');
+                    const subtotalItem = currentRow.querySelector('.subtotal-item');
+                    const gananciaItem = currentRow.querySelector('.ganancia-item');
+                    subtotalItem.classList.remove('animate-neon-flash');
+                    void subtotalItem.offsetWidth;
+                    subtotalItem.classList.add('animate-neon-flash');
+                    gananciaItem.classList.remove('animate-neon-flash');
+                    void gananciaItem.offsetWidth;
+                    gananciaItem.classList.add('animate-neon-flash');
+                    setTimeout(() => {
+                        recalculateFrenchRow(currentRow);
+                    }, 500);
+                    return;
+                }
+
                 if (event.target.classList.contains('cantidad-input')) {
                     const currentRow = event.target.closest('.product-row');
-                    const precioItem = currentRow.querySelector('.precio-item');
+                    if (currentRow.dataset.hasSubproducts === 'true') {
+                        // La cantidad de Francés es derivada de Piso + Lata
+                        return;
+                    }
                     const subtotalItem = currentRow.querySelector('.subtotal-item');
                     const gananciaItem = currentRow.querySelector('.ganancia-item');
                     subtotalItem.classList.remove('animate-neon-flash');
@@ -1313,19 +1737,7 @@
                     gananciaItem.classList.add('animate-neon-flash');
                     setTimeout(() => {
                         const cantidad = parseFloat(event.target.value) || 0;
-                        const precio = parseFloat(precioItem.dataset.price);
-                        const subtotal = cantidad * precio;
-                        let ganancia = 0;
-                        if (currentRow.dataset.profitMultiplier) {
-                            const profitMultiplier = parseFloat(currentRow.dataset.profitMultiplier);
-                            ganancia = (cantidad * profitMultiplier) - subtotal;
-                        } else {
-                            ganancia = subtotal * 0.20;
-                        }
-                        subtotalItem.textContent = `Q${subtotal.toLocaleString('es-GT')}`;
-                        subtotalItem.dataset.subtotal = subtotal;
-                        gananciaItem.textContent = `Q${ganancia.toLocaleString('es-GT')}`;
-                        gananciaItem.dataset.ganancia = ganancia;
+                        computeAndRenderRowTotals(currentRow, cantidad);
                         // Actualizar los totales de la vista activa
                         const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
                         updateViewTotals(activeView);
@@ -1335,6 +1747,24 @@
                             saveProductQuantities(viewElement);
                         }
                     }, 500);
+                }
+            });
+
+            mainContainer.addEventListener('click', (event) => {
+                const toggleBtn = event.target.closest('.toggle-subproductos-btn');
+                if (!toggleBtn) return;
+                const controls = toggleBtn.closest('.french-controls');
+                const popover = controls.querySelector('.subproducts-popover');
+                const isHidden = popover.classList.contains('hidden');
+                mainContainer.querySelectorAll('.subproducts-popover').forEach(p => p.classList.add('hidden'));
+                if (isHidden) {
+                    popover.classList.remove('hidden');
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.french-controls')) {
+                    document.querySelectorAll('.subproducts-popover').forEach(p => p.classList.add('hidden'));
                 }
             });
 
@@ -1568,5 +1998,3 @@
 </body>
 
 </html>
-
-
