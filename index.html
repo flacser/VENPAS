@@ -7,7 +7,6 @@
     <title>Panadería MDJ</title>
 
     <meta name="theme-color" content="#000000" />
-
     <meta name="color-scheme" content="dark light" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,23 +31,13 @@
 
         input[type="number"] {
             -moz-appearance: textfield;
-            appearance: textfield;
         }
 
         /* Animación para el efecto de carga del subtotal y ganancia */
         @keyframes neon-flash {
-            0% {
-                color: #fff;
-            }
-
-            50% {
-                color: #ff1493;
-            }
-
-            /* Rosa neón */
-            100% {
-                color: #fff;
-            }
+            0% { color: #fff; }
+            50% { color: #ff1493; } /* Rosa neón */
+            100% { color: #fff; }
         }
 
         .animate-neon-flash {
@@ -57,13 +46,8 @@
 
         /* Animación para el spinner de carga de la pestaña */
         @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .animate-spin-custom {
@@ -81,13 +65,11 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(3px);
-            /* Asegura el centrado */
             justify-content: center;
             align-items: center;
         }
 
         .modal-container {
-            /* Limita el ancho del contenedor en desktop pero permite usar 100% de su ancho interno */
             width: 100%;
             max-width: 500px;
             display: flex;
@@ -100,22 +82,15 @@
             background-color: #000000;
             padding: 2.5rem 1rem;
             width: 90%;
-            /* Ancho predeterminado para dejar margen en desktop */
             max-width: 500px;
-
-            /* ESTILO SOLICITADO: BORDES RECTOS SIN ESQUINAS REDONDEADAS */
             border: 1px solid #FFFFFF;
-            /* Borde base para color */
             border-left: none;
             border-right: none;
             border-radius: 0;
-            /* Asegura que no haya redondeo */
-
             text-align: center;
             position: relative;
         }
 
-        /* En móvil, se expande a 100% de ancho sin límite de max-width */
         @media (max-width: 767px) {
             .modal-content {
                 width: 100%;
@@ -123,7 +98,6 @@
                 padding: 2.5rem 0.5rem;
             }
 
-            /* Otros ajustes de layout móvil */
             .grid-cols-5.responsive-grid {
                 grid-template-columns: 1fr 1fr 1fr;
             }
@@ -159,17 +133,9 @@
             }
         }
 
-        /* COLORES NEÓN */
-        .neon-pink {
-            color: #fc3dff;
-            /* Rosa neón Correcto */
-        }
+        .neon-pink { color: #fc3dff; }
+        .neon-green { color: #c3ff3d; }
 
-        .neon-green {
-            color: #c3ff3d;
-        }
-
-        /* Botón de cerrar - color celeste simple */
         .simple-blue-btn {
             background-color: #00bcd4;
             color: #000000;
@@ -179,283 +145,60 @@
         .simple-blue-btn:hover {
             background-color: #0099ab;
         }
-
-        .readonly-cantidad {
-            cursor: not-allowed;
-            color: #9ca3af;
-            border-color: #4b5563;
-            background-color: #111827;
-        }
-
-        .product-row[data-has-subproducts="true"] {
-            overflow: visible;
-        }
-
-        .product-row[data-has-subproducts="true"] > .flex.justify-center {
-            overflow: visible;
-        }
-
-        /* Solo el círculo (3rem) se centra como el resto; el + queda fuera a la derecha */
-        .subproduct-controls {
-            position: relative;
-            display: block;
-            width: 3rem;
-            height: 3rem;
-            margin-left: auto;
-            margin-right: auto;
-            flex-shrink: 0;
-        }
-
-        .mini-plus-btn {
-            min-width: 2.85rem;
-            width: auto;
-            height: 1.75rem;
-            border-radius: 0.5rem;
-            border: 1px solid #9ca3af;
-            background-color: #111827;
-            color: #fff;
-            font-weight: 700;
-            line-height: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: absolute;
-            left: calc(100% + 0.2rem);
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 4;
-            font-size: 1.1rem;
-            padding: 0 0.45rem;
-            box-sizing: border-box;
-            overflow: visible;
-        }
-
-        .mini-plus-btn span {
-            transform: none;
-            display: inline-block;
-            line-height: 1;
-        }
-
-        .mini-plus-btn:hover {
-            background-color: #1f2937;
-        }
-
-        .subproducts-popover {
-            position: absolute;
-            top: calc(100% + 0.45rem);
-            right: -1.5rem;
-            z-index: 30;
-            width: 230px;
-            background-color: #000000;
-            border: 1px solid #4b5563;
-            border-radius: 0.75rem;
-            padding: 0.4rem 0.75rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-        }
-
-        .subproduct-controls .cantidad-input {
-            position: relative;
-            z-index: 6;
-        }
-
-        .subproducts-popover.hidden {
-            display: none;
-        }
-
-        .subproduct-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.8rem;
-            font-size: 1.125rem;
-            color: #fff;
-            padding: 0.45rem 0;
-        }
-
-        .subproduct-row + .subproduct-row {
-            border-top: 1px solid #4b5563;
-        }
-
-        .subproduct-input {
-            width: 3rem;
-            height: 3rem;
-            text-align: center;
-            background-color: #111827;
-            color: #fff;
-            border-radius: 9999px;
-            border: 1px solid #6b7280;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        /* Aviso primera visita: dos franjas (arriba/abajo); la fila de Francés queda sin blur */
-        .frances-tip-backdrop-wrap {
-            position: fixed;
-            inset: 0;
-            z-index: 198;
-            pointer-events: none;
-        }
-
-        .frances-tip-strip {
-            position: absolute;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            pointer-events: auto;
-        }
-
-        .frances-feature-tip {
-            position: fixed;
-            z-index: 200;
-            max-width: min(300px, calc(100vw - 24px));
-            pointer-events: auto;
-            padding-top: 6px;
-        }
-
-        .frances-feature-tip-inner {
-            background-color: #000000;
-            border: 1px solid #4b5563;
-            border-radius: 0.75rem;
-            padding: 1rem 1rem 0.85rem;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-        }
-
-        .frances-feature-tip-preview {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.75rem;
-            position: relative;
-        }
-
-        .frances-tip-fake-qty {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 9999px;
-            background-color: #111827;
-            border: 1px solid #4b5563;
-            position: relative;
-            z-index: 2;
-        }
-
-        .frances-tip-fake-plus {
-            width: 2.35rem;
-            height: 1.65rem;
-            border-radius: 0.5rem;
-            border: 1px solid #9ca3af;
-            background-color: #111827;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: -0.75rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .frances-feature-tip-msg {
-            text-align: center;
-            font-size: 1rem;
-            line-height: 1.35;
-            color: #fff;
-            margin-bottom: 0;
-        }
-
-        .frances-feature-tip-arrow {
-            position: absolute;
-            top: 2px;
-            width: 0;
-            height: 0;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            border-bottom: 9px solid #4b5563;
-        }
-
-        .frances-feature-tip-arrow::after {
-            content: "";
-            position: absolute;
-            left: -8px;
-            top: 1px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 8px solid #000000;
+        
+        .ai-highlight {
+            border-color: #00bcd4 !important;
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.6);
         }
     </style>
 </head>
 
 <body class="flex flex-col items-center justify-start min-h-screen">
-    <!-- Contenedor principal con márgenes para dispositivos móviles -->
     <div class="bg-black text-white w-full h-full px-4 md:px-8">
         <!-- Encabezado -->
         <div class="pt-8">
             <h1 class="text-3xl font-bold mb-6 text-center">Panadería MDJ</h1>
 
-            <!-- Contenedor para botones de resumen, guardar y borrar -->
+            <!-- Contenedor para botones de borrar, resumen e IA -->
             <div class="flex justify-center items-center gap-4 mb-6">
-                <!-- Botón de borrar actualizado a PNG Minimalista -->
+                <!-- Botón de borrar actual -->
                 <button id="btn-borrar-actual"
                     class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none"
                     title="Borrar datos de la tabla actual">
                     <img src="https://i.postimg.cc/zfz6ZsHK/borrar-icon.png" alt="Borrar"
                         class="w-8 h-8 object-contain">
                 </button>
-                <!-- Botón Generar resumen -->
+                <!-- Botón Generar resumen (ahora también guarda) -->
                 <button id="btn-resumen" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600">
                     Generar resumen
                 </button>
-                <!-- Botón de guardar actualizado a PNG Minimalista -->
-                <button id="btn-guardar-diario"
-                    class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none"
-                    title="Guardar totales del día">
-                    <img src="https://i.postimg.cc/MvdBQMDz/guardar-icon.png" alt="Guardar" class="w-8 h-8 object-contain">
+                <!-- Botón Cámara IA -->
+                <button id="btn-ia-camera"
+                    class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none bg-gray-800 rounded-full text-white"
+                    title="Escanear con IA">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                    </svg>
                 </button>
             </div>
 
-            <!-- Contenedor flex para los botones de vista y los botones de alternar -->
+            <!-- Contenedor flex para los botones de vista -->
             <div class="flex items-center mb-6 w-full">
-                <!-- Contenedor para el botón de precio a la izquierda -->
                 <div class="flex-grow flex justify-start">
-                    <!-- Botón para alternar la columna de precio -->
-                    <button id="toggle-precio-btn"
-                        class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                        title="Mostrar/Ocultar precios">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <button id="toggle-precio-btn" class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" title="Mostrar/Ocultar precios">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 18l6-6-6-6" />
                         </svg>
                     </button>
                 </div>
-                <!-- Botones de vista centrados -->
                 <div class="flex gap-4">
-                    <button id="btn-manana"
-                        class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600">
-                        Mañana
-                    </button>
-                    <button id="btn-tarde"
-                        class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                        Tarde
-                    </button>
+                    <button id="btn-manana" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600">Mañana</button>
+                    <button id="btn-tarde" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Tarde</button>
                 </div>
-                <!-- Contenedor para el botón de ganancia a la derecha -->
                 <div class="flex-grow flex justify-end">
-                    <!-- Botón para alternar la columna de ganancia -->
-                    <button id="toggle-ganancia-btn"
-                        class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                        title="Mostrar/Ocultar ganancias">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <button id="toggle-ganancia-btn" class="p-2 w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" title="Mostrar/Ocultar ganancias">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 18l-6-6 6-6" />
                         </svg>
                     </button>
@@ -463,172 +206,55 @@
             </div>
         </div>
 
-        <!-- Spinner de carga -->
+        <!-- Spinner de carga general -->
         <div id="loading-spinner" class="hidden flex justify-center items-center h-48">
-            <div class="w-12 h-12 border-4 border-t-4 border-gray-200 border-solid rounded-full animate-spin-custom"
-                style="border-top-color: #ff1493;"></div>
+            <div class="w-12 h-12 border-4 border-t-4 border-gray-200 border-solid rounded-full animate-spin-custom" style="border-top-color: #ff1493;"></div>
         </div>
 
-        <!-- Vista de la mañana (inicialmente visible) -->
+        <!-- Vista de la mañana -->
         <div id="manana-view" class="p-0">
             <div class="flex flex-col gap-0">
-                <!-- Headers de la lista -->
-                <div
-                    class="grid grid-cols-5 responsive-grid items-center text-sm text-gray-400 font-medium pb-1 border-b border-gray-600">
+                <div class="grid grid-cols-5 responsive-grid items-center text-sm text-gray-400 font-medium pb-1 border-b border-gray-600">
                     <span class="text-center precio-col">Precio</span>
                     <span class="text-left">Producto</span>
                     <span class="text-center">Cantidad</span>
                     <span class="text-center">Subtotal</span>
                     <span class="text-center ganancia-col">Ganancia</span>
                 </div>
-
-                <!-- Productos -->
-                <!-- Producto 1 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Pirujos grandes</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                
+                <!-- Productos Mañana (Generados igual que el original) -->
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Pirujos grandes</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Pirujitos</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Tostados</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Pan dulce</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="3">
+                    <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span><span class="text-left">Francés</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Pan grande</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Zepelines</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="5">
+                    <span class="text-center precio-item text-base precio-col" data-price="3.75">Q3.75</span><span class="text-left">Filas de galleta</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span><span class="text-left">Champurradas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span><span class="text-left">Champurradas integrales</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
                 </div>
 
-                <!-- Producto 2 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Pirujitos</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 3 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Tostados</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 4 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Pan dulce</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 5 -->
-                <div class="product-row overflow-visible grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3" data-has-subproducts="true" data-split-kind="frances">
-                    <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span>
-                    <span class="text-left">Francés</span>
-                    <div class="flex justify-center overflow-visible">
-                        <div class="subproduct-controls">
-                            <input type="number" placeholder="" min="0" readonly
-                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
-                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
-                            <div class="subproducts-popover hidden">
-                                <div class="subproduct-row">
-                                    <span>Piso</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-piso" />
-                                </div>
-                                <div class="subproduct-row">
-                                    <span>Lata</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-lata" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 6 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Pan grande</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 7 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Zepelines</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 8 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="5">
-                    <span class="text-center precio-item text-base precio-col" data-price="3.75">Q3.75</span>
-                    <span class="text-left">Filas de galleta</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 9 (Champurradas + integrales unificadas) -->
-                <div class="product-row overflow-visible grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="12" data-has-subproducts="true" data-split-kind="champurradas">
-                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
-                    <span class="text-left">Champurradas</span>
-                    <div class="flex justify-center overflow-visible">
-                        <div class="subproduct-controls">
-                            <input type="number" placeholder="" min="0" readonly
-                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
-                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
-                            <div class="subproducts-popover hidden">
-                                <div class="subproduct-row">
-                                    <span>Normales</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-normales" />
-                                </div>
-                                <div class="subproduct-row">
-                                    <span>Integrales</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-integrales" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Fila de totales -->
-                <div
-                    class="total-row grid grid-cols-5 responsive-grid items-center text-lg py-2 border-t border-gray-600 mt-2">
+                <div class="total-row grid grid-cols-5 responsive-grid items-center text-lg py-2 border-t border-gray-600 mt-2">
                     <span class="col-span-2 text-left font-bold text-base">Total de pago/ganancia</span>
                     <span class="precio-col"></span>
                     <span class="text-center total-subtotal font-bold text-lg text-[#fc3dff] pr-2">Q0</span>
@@ -637,374 +263,94 @@
             </div>
         </div>
 
-        <!-- Vista de la tarde (inicialmente oculta) -->
+        <!-- Vista de la tarde -->
         <div id="tarde-view" class="hidden p-0">
             <div class="flex flex-col gap-0">
-                <!-- Headers de la lista -->
-                <div
-                    class="grid grid-cols-5 responsive-grid items-center text-sm text-gray-400 font-medium pb-1 border-b border-gray-600">
-                    <span class="text-center precio-col">Precio</span>
-                    <span class="text-left">Producto</span>
-                    <span class="text-center">Cantidad</span>
-                    <span class="text-center">Subtotal</span>
-                    <span class="text-center ganancia-col">Ganancia</span>
+                <div class="grid grid-cols-5 responsive-grid items-center text-sm text-gray-400 font-medium pb-1 border-b border-gray-600">
+                    <span class="text-center precio-col">Precio</span><span class="text-left">Producto</span><span class="text-center">Cantidad</span><span class="text-center">Subtotal</span><span class="text-center ganancia-col">Ganancia</span>
                 </div>
 
-                <!-- Productos -->
-                <!-- Producto 1 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Campechanas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                <!-- Productos Tarde (Generados igual que el original) -->
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Campechanas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Lenguas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Pirujos grandes</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Pan grande</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Cortadas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Zepelines</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Tostados</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Pan dulce</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Pirujitos</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="3">
+                    <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span><span class="text-left">Francés</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="5">
+                    <span class="text-center precio-item text-base precio-col" data-price="3.75">Q3.75</span><span class="text-left">Filas de galleta</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Bollos</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1">Q1</span><span class="text-left">Bocados</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Pan integral</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="3.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span><span class="text-left">Empanadas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Encanelados</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Trenzas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Palitos</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.25">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Cemitas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="1.25">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span><span class="text-left">Polvorosas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="3.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span><span class="text-left">Donas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="3.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span><span class="text-left">Cubilete de queso</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="2">
+                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span><span class="text-left">Cubilete de chocolate</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span><span class="text-left">Champurradas</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="12">
+                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span><span class="text-left">Champurradas integrales</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
+                </div>
+                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600" data-profit-multiplier="0.5">
+                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span><span class="text-left">Molletes</span><div class="flex justify-center"><input type="number" min="1" class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" /></div><span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span><span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
                 </div>
 
-                <!-- Producto 2 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Lenguas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 3 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Pirujos grandes</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 4 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Pan grande</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 5 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Cortadas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 6 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Zepelines</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 7 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Tostados</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 8 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Pan dulce</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 9 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Pirujitos</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 10 -->
-                <div class="product-row overflow-visible grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3" data-has-subproducts="true" data-split-kind="frances">
-                    <span class="text-center precio-item text-base precio-col" data-price="2.40">Q2.40</span>
-                    <span class="text-left">Francés</span>
-                    <div class="flex justify-center overflow-visible">
-                        <div class="subproduct-controls">
-                            <input type="number" placeholder="" min="0" readonly
-                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
-                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
-                            <div class="subproducts-popover hidden">
-                                <div class="subproduct-row">
-                                    <span>Piso</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-piso" />
-                                </div>
-                                <div class="subproduct-row">
-                                    <span>Lata</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-lata" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 11 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="5">
-                    <span class="text-center precio-item text-base precio-col" data-price="3.75">Q3.75</span>
-                    <span class="text-left">Filas de galleta</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 12 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Bollos</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 13 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1">Q1</span>
-                    <span class="text-left">Bocados</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 14 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Pan integral</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 15 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span>
-                    <span class="text-left">Empanadas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 16 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Encanelados</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 17 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Trenzas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 18 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Palitos</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 19 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.25">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Cemitas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 20 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="1.25">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.25">Q1.25</span>
-                    <span class="text-left">Polvorosas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 21 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span>
-                    <span class="text-left">Donas</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 22 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="3.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="3">Q3</span>
-                    <span class="text-left">Cubilete de queso</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 23 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="2">
-                    <span class="text-center precio-item text-base precio-col" data-price="1.50">Q1.50</span>
-                    <span class="text-left">Cubilete de chocolate</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 24 (Champurradas + integrales unificadas) -->
-                <div class="product-row overflow-visible grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="12" data-has-subproducts="true" data-split-kind="champurradas">
-                    <span class="text-center precio-item text-base precio-col" data-price="8.50">Q8.50</span>
-                    <span class="text-left">Champurradas</span>
-                    <div class="flex justify-center overflow-visible">
-                        <div class="subproduct-controls">
-                            <input type="number" placeholder="" min="0" readonly
-                                class="cantidad-input readonly-cantidad w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none" />
-                            <button type="button" class="toggle-subproductos-btn mini-plus-btn" title="Desplegar subproductos"><span>+</span></button>
-                            <div class="subproducts-popover hidden">
-                                <div class="subproduct-row">
-                                    <span>Normales</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-normales" />
-                                </div>
-                                <div class="subproduct-row">
-                                    <span>Integrales</span>
-                                    <input type="number" min="0" class="subproduct-input subproduct-integrales" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Producto 25 -->
-                <div class="product-row grid grid-cols-5 responsive-grid items-center text-lg py-1 border-b border-gray-600"
-                    data-profit-multiplier="0.5">
-                    <span class="text-center precio-item text-base precio-col" data-price="0.40">Q0.40</span>
-                    <span class="text-left">Molletes</span>
-                    <div class="flex justify-center">
-                        <input type="number" placeholder="" min="1"
-                            class="cantidad-input w-12 h-12 text-center bg-gray-900 text-white rounded-full border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 cursor-pointer" />
-                    </div>
-                    <span class="text-center subtotal-item font-semibold" data-subtotal="0">Q0</span>
-                    <span class="text-center ganancia-item font-semibold ganancia-col" data-ganancia="0">Q0</span>
-                </div>
-
-                <!-- Fila de totales -->
-                <div
-                    class="total-row grid grid-cols-5 responsive-grid items-center text-lg py-2 border-t border-gray-600 mt-2">
+                <div class="total-row grid grid-cols-5 responsive-grid items-center text-lg py-2 border-t border-gray-600 mt-2">
                     <span class="col-span-2 text-left font-bold text-base">Total de pago/ganancia</span>
                     <span class="precio-col"></span>
                     <span class="text-center total-subtotal font-bold text-lg text-[#fc3dff] pr-2">Q0</span>
@@ -1015,211 +361,118 @@
 
         <!-- Botón del historial -->
         <div class="flex justify-center mt-6">
-            <button id="btn-historial"
-                class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600">
+            <button id="btn-historial" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600">
                 Historial
             </button>
         </div>
 
-        <!-- Vista de años (nueva, inicialmente oculta) -->
+        <!-- Vistas de historial -->
         <div id="year-view" class="hidden p-0 mt-6">
             <h2 class="text-2xl font-bold mb-4 text-center">Ganancias anuales</h2>
             <div class="flex flex-col gap-2" id="year-list">
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item"
-                    data-year="2025">
-                    <span class="font-medium">2025</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item"
-                    data-year="2026">
-                    <span class="font-medium">2026</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item"
-                    data-year="2027">
-                    <span class="font-medium">2027</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item"
-                    data-year="2028">
-                    <span class="font-medium">2028</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item" data-year="2025"><span class="font-medium">2025</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item" data-year="2026"><span class="font-medium">2026</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item" data-year="2027"><span class="font-medium">2027</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer year-item" data-year="2028"><span class="font-medium">2028</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
             </div>
-            <button id="back-from-years-btn"
-                class="hidden mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
         </div>
 
-        <!-- Vista del historial (inicialmente oculta) -->
         <div id="historial-view" class="hidden p-0 mt-6">
             <h2 id="monthly-title" class="text-2xl font-bold mb-4 text-center"></h2>
             <div class="flex flex-col gap-2" id="monthly-list">
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Enero" data-month-index="0">
-                    <span class="font-medium">Enero</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Febrero" data-month-index="1">
-                    <span class="font-medium">Febrero</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Marzo" data-month-index="2">
-                    <span class="font-medium">Marzo</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Abril" data-month-index="3">
-                    <span class="font-medium">Abril</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Mayo" data-month-index="4">
-                    <span class="font-medium">Mayo</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Junio" data-month-index="5">
-                    <span class="font-medium">Junio</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Julio" data-month-index="6">
-                    <span class="font-medium">Julio</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Agosto" data-month-index="7">
-                    <span class="font-medium">Agosto</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Septiembre" data-month-index="8">
-                    <span class="font-medium">Septiembre</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Octubre" data-month-index="9">
-                    <span class="font-medium">Octubre</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Noviembre" data-month-index="10">
-                    <span class="font-medium">Noviembre</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item"
-                    data-month="Diciembre" data-month-index="11">
-                    <span class="font-medium">Diciembre</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Enero" data-month-index="0"><span class="font-medium">Enero</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Febrero" data-month-index="1"><span class="font-medium">Febrero</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Marzo" data-month-index="2"><span class="font-medium">Marzo</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Abril" data-month-index="3"><span class="font-medium">Abril</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Mayo" data-month-index="4"><span class="font-medium">Mayo</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Junio" data-month-index="5"><span class="font-medium">Junio</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Julio" data-month-index="6"><span class="font-medium">Julio</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Agosto" data-month-index="7"><span class="font-medium">Agosto</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Septiembre" data-month-index="8"><span class="font-medium">Septiembre</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Octubre" data-month-index="9"><span class="font-medium">Octubre</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Noviembre" data-month-index="10"><span class="font-medium">Noviembre</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer month-item" data-month="Diciembre" data-month-index="11"><span class="font-medium">Diciembre</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
             </div>
-            <button id="back-to-years-btn"
-                class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
+            <button id="back-to-years-btn" class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
         </div>
 
-        <!-- Vista de la semana (inicialmente oculta) -->
         <div id="weekly-view" class="hidden p-0 mt-6">
             <h2 id="weekly-title" class="text-2xl font-bold mb-4 text-center"></h2>
             <div class="flex flex-col gap-2" id="weekly-list">
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item"
-                    data-week="1">
-                    <span class="font-medium">Semana 1</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item"
-                    data-week="2">
-                    <span class="font-medium">Semana 2</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item"
-                    data-week="3">
-                    <span class="font-medium">Semana 3</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item"
-                    data-week="4">
-                    <span class="font-medium">Semana 4</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item"
-                    data-week="5">
-                    <span class="font-medium">Semana 5</span>
-                    <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item" data-week="1"><span class="font-medium">Semana 1</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item" data-week="2"><span class="font-medium">Semana 2</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item" data-week="3"><span class="font-medium">Semana 3</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item" data-week="4"><span class="font-medium">Semana 4</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer week-item" data-week="5"><span class="font-medium">Semana 5</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span></div>
             </div>
-            <button id="back-to-months-btn"
-                class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
+            <button id="back-to-months-btn" class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
         </div>
 
-        <!-- Vista de los días (nueva, inicialmente oculta) -->
         <div id="day-view" class="hidden p-0 mt-6">
             <h2 id="day-title" class="text-2xl font-bold mb-4 text-center"></h2>
-            <div class="flex flex-col gap-2" id="day-list">
-                <!-- Los días se generarán dinámicamente aquí -->
-            </div>
-            <button id="back-to-weeks-btn"
-                class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
-        </div>
-
-    </div>
-
-    <!-- Nuevo Modal de Confirmación para Guardar -->
-    <div id="confirm-save-modal" class="modal">
-        <div class="modal-container">
-            <div class="modal-content text-white flex flex-col items-center">
-                <h2 class="text-2xl font-bold mb-4">¿Deseas guardar los datos?</h2>
-                <p class="text-sm text-gray-400 mb-8 text-center">Si ya había datos guardados del día de hoy, se
-                    reemplazarán por los datos actuales.</p>
-                <div class="flex gap-4">
-                    <button id="confirm-save-btn"
-                        class="px-6 py-2 rounded-full font-medium bg-[#c3ff3d] text-black transition duration-300">
-                        Guardar
-                    </button>
-                    <button id="cancel-save-btn"
-                        class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600 transition duration-300">
-                        Cancelar
-                    </button>
-                </div>
-            </div>
+            <div class="flex flex-col gap-2" id="day-list"></div>
+            <button id="back-to-weeks-btn" class="mt-4 px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Volver</button>
         </div>
     </div>
 
-        <!-- Nuevo Modal de Confirmación para Borrar -->
+    <!-- Modal para Borrar -->
     <div id="confirm-delete-modal" class="modal">
         <div class="modal-container">
             <div class="modal-content text-white flex flex-col items-center">
                 <h2 class="text-2xl font-bold mb-4">¿Deseas borrar los datos?</h2>
                 <p class="text-sm text-gray-400 mb-8 text-center">Se borrarán las cantidades de la tabla actual. Esta acción no se puede deshacer.</p>
                 <div class="flex gap-4">
-                    <button id="confirm-delete-btn" class="px-6 py-2 rounded-full font-medium bg-[#fc3dff] text-black focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">
-                        Borrar
-                    </button>
-                    <button id="cancel-delete-btn" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 active:bg-gray-600 transition duration-300">
-                        Cancelar
-                    </button>
+                    <button id="confirm-delete-btn" class="px-6 py-2 rounded-full font-medium bg-[#fc3dff] text-black focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300">Borrar</button>
+                    <button id="cancel-delete-btn" class="px-6 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-300">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal para seleccionar origen IA -->
+    <div id="ai-source-modal" class="modal">
+        <div class="modal-container">
+            <div class="modal-content text-white flex flex-col items-center">
+                <h2 class="text-2xl font-bold mb-6">Seleccionar origen</h2>
+                <div class="flex gap-4">
+                    <button id="btn-take-photo" class="px-6 py-2 rounded-full font-medium bg-[#00bcd4] text-black transition duration-300">Cámara</button>
+                    <button id="btn-pick-gallery" class="px-6 py-2 rounded-full font-medium bg-purple-600 text-white transition duration-300">Galería</button>
+                </div>
+                <button id="cancel-ai-source-btn" class="mt-8 px-6 py-2 rounded-full font-medium bg-gray-800 transition duration-300">Cancelar</button>
+                <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
+                <input type="file" id="gallery-input" accept="image/*" class="hidden">
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay de carga de IA -->
+    <div id="ai-loading-overlay" class="modal">
+        <div class="modal-container">
+            <div class="modal-content text-white flex flex-col items-center border-[#00bcd4]">
+                <div class="w-12 h-12 border-4 border-t-4 border-gray-200 border-solid rounded-full animate-spin-custom mb-4" style="border-top-color: #00bcd4;"></div>
+                <h2 class="text-xl font-bold">la IA está viendo los panes...</h2>
+                <p class="text-sm text-gray-400 mt-2">espérate un cacho</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra flotante IA para vista previa -->
+    <div id="ai-floating-bar" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-900 border border-[#00bcd4] p-4 rounded-xl shadow-[0_0_15px_rgba(0,188,212,0.3)] z-[100] hidden flex-col gap-3 w-11/12 max-w-sm">
+        <span class="text-[#00bcd4] font-bold text-center">Revisá los datos de la IA</span>
+        <div class="flex gap-4 w-full">
+            <button id="ai-cancelar" class="flex-1 py-2 rounded-full font-medium bg-gray-800 hover:bg-gray-700 text-white transition-colors">Cancelar</button>
+            <button id="ai-guardar" class="flex-1 py-2 rounded-full font-medium bg-[#00bcd4] text-black hover:bg-[#0099ab] transition-colors">Guardar</button>
+        </div>
+    </div>
 
     <!-- Modal para el resumen -->
     <div id="resumen-modal" class="modal">
-        <!-- El modal-container maneja el centrado y el ancho máximo en desktop -->
         <div class="modal-container">
-            <!-- Se utiliza modal-content con el borde recto y sin redondeo -->
             <div class="modal-content text-white flex flex-col items-center">
                 <h2 class="text-2xl font-bold mb-8">Resumen del día</h2>
-
-                <!-- Contenedor del spinner -->
                 <div id="modal-spinner" class="flex justify-center items-center h-24">
-                    <div class="w-10 h-10 border-4 border-t-4 border-gray-200 border-solid rounded-full animate-spin-custom"
-                        style="border-top-color: #ff1493;"></div>
+                    <div class="w-10 h-10 border-4 border-t-4 border-gray-200 border-solid rounded-full animate-spin-custom" style="border-top-color: #ff1493;"></div>
                 </div>
-
-                <!-- Contenedor del resumen (inicialmente oculto) -->
                 <div id="resumen-data" class="hidden w-full max-w-xs">
                     <div class="flex flex-col gap-6 items-center w-full px-4">
                         <div class="flex flex-col items-center w-full">
@@ -1233,108 +486,43 @@
                     </div>
                 </div>
             </div>
-            <!-- Botón de Cerrar (FUERA DEL RECUADRO) -->
-            <button id="close-modal"
-                class="mt-8 px-8 py-3 rounded-full simple-blue-btn transition duration-300">Cerrar</button>
-        </div>
-    </div>
-
-    <!-- Aviso primera visita: subdivisión Francés (franjas arriba/abajo; la fila Francés queda nítida) -->
-    <div id="frances-tip-backdrop" class="frances-tip-backdrop-wrap hidden" aria-hidden="true">
-        <div id="frances-tip-strip-top" class="frances-tip-strip"></div>
-        <div id="frances-tip-strip-bottom" class="frances-tip-strip"></div>
-    </div>
-    <div id="frances-feature-tip" class="frances-feature-tip hidden" role="dialog" aria-labelledby="frances-tip-title">
-        <div class="frances-feature-tip-arrow" aria-hidden="true"></div>
-        <div class="frances-feature-tip-inner">
-            <div class="frances-feature-tip-preview">
-                <span class="frances-tip-fake-qty"></span>
-                <span class="frances-tip-fake-plus"><span>+</span></span>
-            </div>
-            <p id="frances-tip-title" class="frances-feature-tip-msg">¡Ahora el pan Francés tiene subdivisiones! Pulsa el botón <strong>+</strong> junto a la cantidad para continuar.</p>
+            <button id="close-modal" class="mt-8 px-8 py-3 rounded-full simple-blue-btn transition duration-300">Cerrar</button>
         </div>
     </div>
 
     <script>
-
+        const apiKey = "";
+        
         // --- INICIO: Configuración e inicialización de Firebase ---
-            const firebaseConfig = {
-                apiKey: "AIzaSyChKRvkT_H4aBrEIIPtSke0D7sNwGlNd_o",
-                authDomain: "database-anonima.firebaseapp.com",
-                projectId: "database-anonima",
-                storageBucket: "database-anonima.firebasestorage.app",
-                messagingSenderId: "150261844191",
-                appId: "1:150261844191:web:4313ab788cbba02105016a",
-                measurementId: "G-M6PZD9CPJF"
-            };
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAqo_o5VMapMOjlAH0yHKsQkrc3OH9LEM",
+            authDomain: "venpaspruebas.firebaseapp.com",
+            databaseURL: "https://venpaspruebas-default-rtdb.firebaseio.com",
+            projectId: "venpaspruebas",
+            storageBucket: "venpaspruebas.firebasestorage.app",
+            messagingSenderId: "288965411473",
+            appId: "1:288965411473:web:0d2458c74f3345530cf530",
+            measurementId: "G-5GTQW95WJ5"
+        };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         // --- FIN: Configuración e inicialización de Firebase ---
 
-        // Función para obtener el nombre de la vista (manana/tarde)
         function getViewName(viewElement) {
             if (viewElement.id === 'manana-view') return 'manana';
             if (viewElement.id === 'tarde-view') return 'tarde';
             return 'otros';
         }
 
-        /** Migra datos viejos donde Champurradas e integrales eran filas 8 y 9 (solo mañana). */
-        function migrateMananaChampurradasData(data) {
-            if (!data || typeof data !== 'object') return data;
-            const d = { ...data };
-            if (typeof d[8] === 'number' && typeof d[9] === 'number') {
-                d[8] = { total: d[8] + d[9], normales: d[8], integrales: d[9] };
-                delete d[9];
-            }
-            return d;
-        }
-
-        /** Migra datos viejos donde Champurradas eran filas 23 y 24 y Molletes era 25 (tarde). */
-        function migrateTardeChampurradasData(data) {
-            if (!data || typeof data !== 'object') return data;
-            if (!(typeof data[23] === 'number' && typeof data[24] === 'number')) return data;
-            const out = {};
-            for (let i = 0; i < 23; i++) {
-                if (data[i] !== undefined) out[i] = data[i];
-            }
-            const n23 = data[23];
-            const n24 = data[24];
-            out[23] = { total: n23 + n24, normales: n23, integrales: n24 };
-            if (data[25] !== undefined) out[24] = data[25];
-            return out;
-        }
-
-        // Función para guardar cantidades de productos en Firestore
         async function saveProductQuantities(viewElement) {
             const viewName = getViewName(viewElement);
             const rows = viewElement.querySelectorAll('.product-row');
             const data = {};
             rows.forEach((row, idx) => {
                 const input = row.querySelector('.cantidad-input');
-                const hasSubproducts = row.dataset.hasSubproducts === 'true';
-                if (hasSubproducts) {
-                    const pisoInput = row.querySelector('.subproduct-piso');
-                    const lataInput = row.querySelector('.subproduct-lata');
-                    const normalesInput = row.querySelector('.subproduct-normales');
-                    const integralesInput = row.querySelector('.subproduct-integrales');
-                    if (pisoInput && lataInput) {
-                        const piso = Number(pisoInput.value || 0);
-                        const lata = Number(lataInput.value || 0);
-                        const total = piso + lata;
-                        if (total > 0 || pisoInput.value !== "" || lataInput.value !== "") {
-                            data[idx] = { total, piso, lata };
-                        }
-                    } else if (normalesInput && integralesInput) {
-                        const normales = Number(normalesInput.value || 0);
-                        const integrales = Number(integralesInput.value || 0);
-                        const total = normales + integrales;
-                        if (total > 0 || normalesInput.value !== "" || integralesInput.value !== "") {
-                            data[idx] = { total, normales, integrales };
-                        }
-                    }
-                } else if (input && input.value !== "") {
+                if (input && input.value !== "") {
                     data[idx] = Number(input.value);
-                } // Si está vacío, no se guarda nada para ese índice
+                }
             });
             try {
                 await db.collection('ventas').doc(viewName).set(data);
@@ -1343,68 +531,22 @@
             }
         }
 
-        // Función para cargar cantidades de productos desde Firestore
         async function loadProductQuantities(viewElement) {
             const viewName = getViewName(viewElement);
             try {
                 const doc = await db.collection('ventas').doc(viewName).get();
                 if (doc.exists) {
-                    let data = doc.data();
-                    if (viewElement.id === 'manana-view') {
-                        data = migrateMananaChampurradasData(data);
-                    } else if (viewElement.id === 'tarde-view') {
-                        data = migrateTardeChampurradasData(data);
-                    }
+                    const data = doc.data();
                     const rows = viewElement.querySelectorAll('.product-row');
                     rows.forEach((row, idx) => {
                         const input = row.querySelector('.cantidad-input');
-                        const hasSubproducts = row.dataset.hasSubproducts === 'true';
                         if (input) {
-                            if (hasSubproducts) {
-                                const pisoInput = row.querySelector('.subproduct-piso');
-                                const lataInput = row.querySelector('.subproduct-lata');
-                                const normalesInput = row.querySelector('.subproduct-normales');
-                                const integralesInput = row.querySelector('.subproduct-integrales');
-                                const savedValue = data[idx];
-                                if (pisoInput && lataInput) {
-                                    if (savedValue && typeof savedValue === 'object' && ('piso' in savedValue || 'lata' in savedValue)) {
-                                        pisoInput.value = savedValue.piso > 0 ? savedValue.piso : "";
-                                        lataInput.value = savedValue.lata > 0 ? savedValue.lata : "";
-                                        input.value = savedValue.total > 0 ? savedValue.total : "";
-                                    } else if (typeof savedValue === 'number') {
-                                        pisoInput.value = savedValue > 0 ? savedValue : "";
-                                        lataInput.value = "";
-                                        input.value = savedValue > 0 ? savedValue : "";
-                                    } else {
-                                        pisoInput.value = "";
-                                        lataInput.value = "";
-                                        input.value = "";
-                                    }
-                                } else if (normalesInput && integralesInput) {
-                                    if (savedValue && typeof savedValue === 'object' && ('normales' in savedValue || 'integrales' in savedValue)) {
-                                        normalesInput.value = savedValue.normales > 0 ? savedValue.normales : "";
-                                        integralesInput.value = savedValue.integrales > 0 ? savedValue.integrales : "";
-                                        input.value = savedValue.total > 0 ? savedValue.total : "";
-                                    } else if (typeof savedValue === 'number') {
-                                        normalesInput.value = savedValue > 0 ? savedValue : "";
-                                        integralesInput.value = "";
-                                        input.value = savedValue > 0 ? savedValue : "";
-                                    } else {
-                                        normalesInput.value = "";
-                                        integralesInput.value = "";
-                                        input.value = "";
-                                    }
-                                }
-                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                            if (data[idx] === undefined || data[idx] === null || data[idx] === "") {
+                                input.value = "";
                             } else {
-                                if (data[idx] === undefined || data[idx] === null || data[idx] === "") {
-                                    input.value = "";
-                                } else {
-                                    input.value = data[idx];
-                                }
-                                // Disparar evento input para actualizar subtotales
-                                input.dispatchEvent(new Event('input', { bubbles: true }));
+                                input.value = data[idx];
                             }
+                            input.dispatchEvent(new Event('input', { bubbles: true }));
                         }
                     });
                 }
@@ -1414,15 +556,14 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- INICIO: Mostrar historial desde Firestore ---
-            // Cargar totales de años
+            
+            // --- Carga de historiales (Mantenido del original) ---
             async function loadYearTotals() {
                 const yearList = document.getElementById('year-list');
                 const yearItems = yearList.querySelectorAll('.year-item');
                 for (const item of yearItems) {
                     const year = item.dataset.year;
                     let total = 0;
-                    // Sumar los totales de todos los meses del año
                     const mesesSnap = await db.collection('historial').doc(year).collection('meses').get();
                     if (mesesSnap.size > 0) {
                         for (const mesDoc of mesesSnap.docs) {
@@ -1430,7 +571,6 @@
                             if (data && data.totalGanancia) total += data.totalGanancia;
                         }
                     } else {
-                        // Fallback: sumar todas las ganancias de todos los días del año si no hay documentos de mes
                         for (let m = 1; m <= 12; m++) {
                             for (let w = 1; w <= 5; w++) {
                                 const diasSnap = await db.collection('historial').doc(year).collection(`${m}`).doc(`sem${w}`).collection('dias').get();
@@ -1445,14 +585,12 @@
                 }
             }
 
-            // Cargar totales de meses para un año
             async function loadMonthTotals(year) {
                 const monthlyList = document.getElementById('monthly-list');
                 const monthItems = monthlyList.querySelectorAll('.month-item');
                 for (const item of monthItems) {
                     const month = item.dataset.monthIndex ? (parseInt(item.dataset.monthIndex) + 1) : 1;
                     let total = 0;
-                    // Sumar todas las ganancias de todos los días del mes
                     for (let w = 1; w <= 5; w++) {
                         const diasSnap = await db.collection('historial').doc(year).collection(`${month}`).doc(`sem${w}`).collection('dias').get();
                         for (const diaDoc of diasSnap.docs) {
@@ -1464,14 +602,12 @@
                 }
             }
 
-            // Cargar totales de semanas para un mes
             async function loadWeekTotals(year, month) {
                 const weeklyList = document.getElementById('weekly-list');
                 const weekItems = weeklyList.querySelectorAll('.week-item');
                 for (const item of weekItems) {
                     const week = item.dataset.week;
                     let total = 0;
-                    // Sumar todas las ganancias de los días de la semana
                     const diasSnap = await db.collection('historial').doc(year).collection(`${month}`).doc(`sem${week}`).collection('dias').get();
                     for (const diaDoc of diasSnap.docs) {
                         const data = diaDoc.data();
@@ -1481,34 +617,26 @@
                 }
             }
 
-            // Cargar totales de días para una semana
             async function loadDayTotals(year, month, week) {
                 const dayList = document.getElementById('day-list');
                 const dayItems = dayList.querySelectorAll('.day-item');
                 for (const item of dayItems) {
                     const dayText = item.querySelector('span.font-medium').textContent;
-                    // Extraer el número de día del texto (ej: "Lunes 25")
                     const match = dayText.match(/\b(\d{1,2})\b$/);
                     if (!match) continue;
                     const day = match[1];
                     const dayId = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                     const doc = await db.collection('historial').doc(year).collection(`${month}`).doc(`sem${week}`).collection('dias').doc(dayId).get();
                     let total = 0;
-                    if (doc.exists && doc.data().totalGanancia) {
-                        total = doc.data().totalGanancia;
-                    }
+                    if (doc.exists && doc.data().totalGanancia) total = doc.data().totalGanancia;
                     item.querySelector('span.font-bold').textContent = `Q${Number(total).toLocaleString('es-GT', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
                 }
             }
 
-            // Llamar al cargar la página
             loadYearTotals();
-            // --- FIN: Mostrar historial desde Firestore ---
 
+            // Referencias del DOM
             const btnManana = document.getElementById('btn-manana');
-            // Cargar cantidades desde Firestore al cargar la página
-            loadProductQuantities(document.getElementById('manana-view'));
-            loadProductQuantities(document.getElementById('tarde-view'));
             const btnTarde = document.getElementById('btn-tarde');
             const btnResumen = document.getElementById('btn-resumen');
             const btnHistorial = document.getElementById('btn-historial');
@@ -1520,174 +648,31 @@
             const dayView = document.getElementById('day-view');
             const loadingSpinner = document.getElementById('loading-spinner');
             const mainContainer = document.querySelector('.bg-black');
+            const body = document.body;
+            
             const resumenModal = document.getElementById('resumen-modal');
             const modalSpinner = document.getElementById('modal-spinner');
             const resumenData = document.getElementById('resumen-data');
             const closeModalBtn = document.getElementById('close-modal');
             const pagoTotalSpan = document.getElementById('pago-total');
             const gananciaTotalSpan = document.getElementById('ganancia-total');
-            const body = document.body;
-            const btnGuardarDiario = document.getElementById('btn-guardar-diario'); // Nueva constante
-            const confirmSaveModal = document.getElementById('confirm-save-modal'); // Nuevo
-            const confirmSaveBtn = document.getElementById('confirm-save-btn'); // Nuevo
-            const cancelSaveBtn = document.getElementById('cancel-save-btn'); // Nuevo
-                        // Nuevas constantes para el botón y modal de borrar
-            const btnBorrarActual = document.getElementById('btn-borrar-actual'); // Nuevo
-            const confirmDeleteModal = document.getElementById('confirm-delete-modal'); // Nuevo
-            const confirmDeleteBtn = document.getElementById('confirm-delete-btn'); // Nuevo
-            const cancelDeleteBtn = document.getElementById('cancel-delete-btn'); // Nuevo
 
+            const btnBorrarActual = document.getElementById('btn-borrar-actual');
+            const confirmDeleteModal = document.getElementById('confirm-delete-modal');
+            const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+            const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+            
             const togglePrecioBtn = document.getElementById('toggle-precio-btn');
             const toggleGananciaBtn = document.getElementById('toggle-ganancia-btn');
-            const yearList = document.getElementById('year-list');
-            const monthlyTitle = document.getElementById('monthly-title');
-            const monthlyList = document.getElementById('monthly-list');
-            const weeklyList = document.getElementById('weekly-list');
-            const dayList = document.getElementById('day-list');
-            const weeklyTitle = document.getElementById('weekly-title');
-            const dayTitle = document.getElementById('day-title');
-            const backToYearsBtn = document.getElementById('back-to-years-btn');
-            const backToMonthsBtn = document.getElementById('back-to-months-btn');
-            const backToWeeksBtn = document.getElementById('back-to-weeks-btn');
+
+            loadProductQuantities(mananaView);
+            loadProductQuantities(tardeView);
 
             let currentYear = 0;
             let currentMonthName = '';
             let currentMonthIndex = 0;
             let currentWeekNumber = 0;
-
             const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-
-            const FRANCES_TIP_STORAGE_KEY = 'mdj-frances-subproductos-tip-v1';
-
-            const getVisibleFrenchRow = () => {
-                if (!mananaView.classList.contains('hidden')) {
-                    return mananaView.querySelector('.product-row[data-split-kind="frances"]');
-                }
-                if (!tardeView.classList.contains('hidden')) {
-                    return tardeView.querySelector('.product-row[data-split-kind="frances"]');
-                }
-                return null;
-            };
-
-            const getVisibleFrenchPlusBtn = () => {
-                const row = getVisibleFrenchRow();
-                return row ? row.querySelector('.toggle-subproductos-btn') : null;
-            };
-
-            const hideFrancesFeatureTipWithoutPersist = () => {
-                const b = document.getElementById('frances-tip-backdrop');
-                const t = document.getElementById('frances-feature-tip');
-                if (b) b.classList.add('hidden');
-                if (t) t.classList.add('hidden');
-            };
-
-            const dismissFrancesFeatureTip = () => {
-                try {
-                    localStorage.setItem(FRANCES_TIP_STORAGE_KEY, '1');
-                } catch (e) {
-                    /* ignore */
-                }
-                hideFrancesFeatureTipWithoutPersist();
-            };
-
-            const positionFrancesFeatureTip = () => {
-                const backdropWrap = document.getElementById('frances-tip-backdrop');
-                const stripTop = document.getElementById('frances-tip-strip-top');
-                const stripBottom = document.getElementById('frances-tip-strip-bottom');
-                const tip = document.getElementById('frances-feature-tip');
-                if (!backdropWrap || !stripTop || !stripBottom || !tip) return;
-                try {
-                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
-                } catch (e) {
-                    return;
-                }
-                const frenchRow = getVisibleFrenchRow();
-                const btn = getVisibleFrenchPlusBtn();
-                if (!frenchRow || !btn) {
-                    hideFrancesFeatureTipWithoutPersist();
-                    return;
-                }
-                const rowRect = frenchRow.getBoundingClientRect();
-                const vh = window.innerHeight;
-                stripTop.style.top = '0';
-                stripTop.style.height = `${Math.max(0, rowRect.top)}px`;
-                stripBottom.style.top = `${rowRect.bottom}px`;
-                stripBottom.style.height = `${Math.max(0, vh - rowRect.bottom)}px`;
-
-                const rect = btn.getBoundingClientRect();
-                const maxW = Math.min(300, window.innerWidth - 24);
-                tip.style.width = `${maxW}px`;
-                let left = rect.left + rect.width / 2 - maxW / 2;
-                left = Math.max(12, Math.min(window.innerWidth - maxW - 12, left));
-                const top = rect.bottom + 14;
-                tip.style.left = `${left}px`;
-                tip.style.top = `${top}px`;
-                const arrow = tip.querySelector('.frances-feature-tip-arrow');
-                if (arrow) {
-                    const btnCenter = rect.left + rect.width / 2;
-                    let arrowLeft = btnCenter - left - 9;
-                    arrowLeft = Math.max(18, Math.min(maxW - 36, arrowLeft));
-                    arrow.style.left = `${arrowLeft}px`;
-                }
-                backdropWrap.classList.remove('hidden');
-                tip.classList.remove('hidden');
-            };
-
-            const maybeShowFrancesFeatureTipAfterMainView = () => {
-                try {
-                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
-                } catch (e) {
-                    return;
-                }
-                positionFrancesFeatureTip();
-            };
-
-            const computeAndRenderRowTotals = (row, cantidad) => {
-                const precioItem = row.querySelector('.precio-item');
-                const subtotalItem = row.querySelector('.subtotal-item');
-                const gananciaItem = row.querySelector('.ganancia-item');
-                const precio = parseFloat(precioItem.dataset.price);
-                const subtotal = cantidad * precio;
-                let ganancia = 0;
-                if (row.dataset.profitMultiplier) {
-                    const profitMultiplier = parseFloat(row.dataset.profitMultiplier);
-                    ganancia = (cantidad * profitMultiplier) - subtotal;
-                } else {
-                    ganancia = subtotal * 0.20;
-                }
-                subtotalItem.textContent = `Q${subtotal.toLocaleString('es-GT')}`;
-                subtotalItem.dataset.subtotal = subtotal;
-                gananciaItem.textContent = `Q${ganancia.toLocaleString('es-GT')}`;
-                gananciaItem.dataset.ganancia = ganancia;
-            };
-
-            const recalculateSplitProductRow = (row) => {
-                const totalInput = row.querySelector('.cantidad-input');
-                const pisoInput = row.querySelector('.subproduct-piso');
-                const lataInput = row.querySelector('.subproduct-lata');
-                const normalesInput = row.querySelector('.subproduct-normales');
-                const integralesInput = row.querySelector('.subproduct-integrales');
-                let a = 0;
-                let b = 0;
-                if (pisoInput && lataInput) {
-                    a = parseFloat(pisoInput.value) || 0;
-                    b = parseFloat(lataInput.value) || 0;
-                } else if (normalesInput && integralesInput) {
-                    a = parseFloat(normalesInput.value) || 0;
-                    b = parseFloat(integralesInput.value) || 0;
-                } else {
-                    return;
-                }
-                const total = a + b;
-                totalInput.value = total > 0 ? total : "";
-                computeAndRenderRowTotals(row, total);
-                const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
-                updateViewTotals(activeView);
-                const viewElement = row.closest('#manana-view, #tarde-view');
-                if (viewElement) {
-                    saveProductQuantities(viewElement);
-                }
-            };
 
             const updateViewTotals = (viewElement) => {
                 let totalSubtotal = 0;
@@ -1695,33 +680,24 @@
 
                 const subtotalItems = viewElement.querySelectorAll('.subtotal-item');
                 subtotalItems.forEach(item => {
-                    const value = parseFloat(item.dataset.subtotal) || 0;
-                    totalSubtotal += value;
+                    totalSubtotal += parseFloat(item.dataset.subtotal) || 0;
                 });
 
                 const gananciaItems = viewElement.querySelectorAll('.ganancia-item');
                 gananciaItems.forEach(item => {
-                    const value = parseFloat(item.dataset.ganancia) || 0;
-                    totalGanancia += value;
+                    totalGanancia += parseFloat(item.dataset.ganancia) || 0;
                 });
 
-                const totalSubtotalSpan = viewElement.querySelector('.total-subtotal');
-                const totalGananciaSpan = viewElement.querySelector('.total-ganancia');
+                viewElement.querySelector('.total-subtotal').textContent = `Q${totalSubtotal.toLocaleString('es-GT')}`;
+                viewElement.querySelector('.total-ganancia').textContent = `Q${totalGanancia.toLocaleString('es-GT')}`;
 
-                totalSubtotalSpan.textContent = `Q${totalSubtotal.toLocaleString('es-GT')}`;
-                totalGananciaSpan.textContent = `Q${totalGanancia.toLocaleString('es-GT')}`;
-
-                return {
-                    totalSubtotal,
-                    totalGanancia
-                };
+                return { totalSubtotal, totalGanancia };
             };
 
             const activateButton = (button) => {
                 btnManana.classList.remove('bg-[#c3ff3d]', 'text-black');
                 btnTarde.classList.remove('bg-[#fc3dff]', 'text-black');
                 btnHistorial.classList.remove('bg-purple-600', 'hover:bg-purple-500', 'active:bg-purple-700');
-
                 btnManana.classList.add('bg-gray-800');
                 btnTarde.classList.add('bg-gray-800');
                 btnHistorial.classList.add('bg-gray-800');
@@ -1750,129 +726,93 @@
                     if (button === btnManana) {
                         mananaView.classList.remove('hidden');
                         updateViewTotals(mananaView);
-                        maybeShowFrancesFeatureTipAfterMainView();
                     } else if (button === btnTarde) {
                         tardeView.classList.remove('hidden');
                         updateViewTotals(tardeView);
-                        maybeShowFrancesFeatureTipAfterMainView();
                     } else if (button === btnHistorial) {
                         yearView.classList.remove('hidden');
-                        hideFrancesFeatureTipWithoutPersist();
                     }
-                }, 500); // Muestra el spinner por 0.5 segundos
+                }, 500);
             };
 
-            // Establecer el estado inicial
             activateButton(btnManana);
-            // Oculta ambas columnas al inicio
-            mananaView.classList.remove('show-precio');
-            tardeView.classList.remove('show-precio');
-            mananaView.classList.remove('show-ganancia');
-            tardeView.classList.remove('show-ganancia');
-
 
             btnManana.addEventListener('click', () => activateButton(btnManana));
-            btnTarde.addEventListener('click', () => {
-                activateButton(btnTarde);
-            });
-            btnHistorial.addEventListener('click', () => {
-                activateButton(btnHistorial);
-            });
-
-            const francesFeatureTipEl = document.getElementById('frances-feature-tip');
-
-            window.addEventListener('resize', () => {
-                if (!francesFeatureTipEl || francesFeatureTipEl.classList.contains('hidden')) return;
-                try {
-                    if (localStorage.getItem(FRANCES_TIP_STORAGE_KEY)) return;
-                } catch (e) {
-                    return;
-                }
-                positionFrancesFeatureTip();
-            });
+            btnTarde.addEventListener('click', () => activateButton(btnTarde));
+            btnHistorial.addEventListener('click', () => activateButton(btnHistorial));
 
             mainContainer.addEventListener('input', (event) => {
-                if (event.target.classList.contains('subproduct-input')) {
-                    const currentRow = event.target.closest('.product-row');
-                    const subtotalItem = currentRow.querySelector('.subtotal-item');
-                    const gananciaItem = currentRow.querySelector('.ganancia-item');
-                    subtotalItem.classList.remove('animate-neon-flash');
-                    void subtotalItem.offsetWidth;
-                    subtotalItem.classList.add('animate-neon-flash');
-                    gananciaItem.classList.remove('animate-neon-flash');
-                    void gananciaItem.offsetWidth;
-                    gananciaItem.classList.add('animate-neon-flash');
-                    setTimeout(() => {
-                        recalculateSplitProductRow(currentRow);
-                    }, 500);
-                    return;
-                }
-
                 if (event.target.classList.contains('cantidad-input')) {
                     const currentRow = event.target.closest('.product-row');
-                    if (currentRow.dataset.hasSubproducts === 'true') {
-                        // Cantidad derivada de subproductos (Francés / Champurradas)
-                        return;
-                    }
+                    const precioItem = currentRow.querySelector('.precio-item');
                     const subtotalItem = currentRow.querySelector('.subtotal-item');
                     const gananciaItem = currentRow.querySelector('.ganancia-item');
+                    
                     subtotalItem.classList.remove('animate-neon-flash');
                     void subtotalItem.offsetWidth;
                     subtotalItem.classList.add('animate-neon-flash');
                     gananciaItem.classList.remove('animate-neon-flash');
                     void gananciaItem.offsetWidth;
                     gananciaItem.classList.add('animate-neon-flash');
+                    
                     setTimeout(() => {
                         const cantidad = parseFloat(event.target.value) || 0;
-                        computeAndRenderRowTotals(currentRow, cantidad);
-                        // Actualizar los totales de la vista activa
+                        const precio = parseFloat(precioItem.dataset.price);
+                        const subtotal = cantidad * precio;
+                        let ganancia = currentRow.dataset.profitMultiplier 
+                            ? (cantidad * parseFloat(currentRow.dataset.profitMultiplier)) - subtotal
+                            : subtotal * 0.20;
+                            
+                        subtotalItem.textContent = `Q${subtotal.toLocaleString('es-GT')}`;
+                        subtotalItem.dataset.subtotal = subtotal;
+                        gananciaItem.textContent = `Q${ganancia.toLocaleString('es-GT')}`;
+                        gananciaItem.dataset.ganancia = ganancia;
+                        
                         const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
                         updateViewTotals(activeView);
-                        // Guardar cantidades en Firestore para la vista correspondiente
-                        const viewElement = currentRow.closest('#manana-view, #tarde-view');
-                        if (viewElement) {
-                            saveProductQuantities(viewElement);
+                        
+                        // Guardar en firestore la tabla actual si no está en modo IA preview
+                        if(document.getElementById('ai-floating-bar').classList.contains('hidden')){
+                           saveProductQuantities(activeView);
                         }
                     }, 500);
                 }
             });
 
-            mainContainer.addEventListener('click', (event) => {
-                const toggleBtn = event.target.closest('.toggle-subproductos-btn');
-                if (!toggleBtn) return;
-                const row = toggleBtn.closest('.product-row');
-                const controls = toggleBtn.closest('.subproduct-controls');
-                const popover = controls.querySelector('.subproducts-popover');
-                if (row && row.getAttribute('data-split-kind') === 'frances' && francesFeatureTipEl && !francesFeatureTipEl.classList.contains('hidden')) {
-                    dismissFrancesFeatureTip();
-                }
-                const isHidden = popover.classList.contains('hidden');
-                mainContainer.querySelectorAll('.subproducts-popover').forEach(p => p.classList.add('hidden'));
-                if (isHidden) {
-                    popover.classList.remove('hidden');
-                }
-            });
-
-            document.addEventListener('click', (event) => {
-                if (!event.target.closest('.subproduct-controls')) {
-                    document.querySelectorAll('.subproducts-popover').forEach(p => p.classList.add('hidden'));
-                }
-            });
-
-            // Manejar el botón de resumen
-            btnResumen.addEventListener('click', () => {
-                // Obtener los totales de ambas vistas
-                const mananaTotals = updateViewTotals(mananaView);
-                const tardeTotals = updateViewTotals(tardeView);
-
-                // Sumar los totales para el resumen general
-                const totalSubtotal = mananaTotals.totalSubtotal + tardeTotals.totalSubtotal;
-                const totalGanancia = mananaTotals.totalGanancia + tardeTotals.totalGanancia;
-
+            // Generar resumen y GUARDAR AUTOMÁTICAMENTE
+            btnResumen.addEventListener('click', async () => {
                 modalSpinner.classList.remove('hidden');
                 resumenData.classList.add('hidden');
                 resumenModal.style.display = 'flex';
                 body.style.overflow = 'hidden';
+
+                const mananaTotals = updateViewTotals(mananaView);
+                const tardeTotals = updateViewTotals(tardeView);
+                const totalSubtotal = mananaTotals.totalSubtotal + tardeTotals.totalSubtotal;
+                const totalGanancia = mananaTotals.totalGanancia + tardeTotals.totalGanancia;
+
+                // GUARDAR DATOS EN HISTORIAL DIRECTAMENTE
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = now.getMonth() + 1;
+                const day = now.getDate();
+                const week = Math.ceil(day / 7);
+                const dayId = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const resumenRef = db.collection('historial').doc(`${year}`).collection(`${month}`).doc(`sem${week}`).collection('dias').doc(dayId);
+
+                try {
+                    await resumenRef.set({
+                        year, month, week, day, totalGanancia,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    
+                    await loadYearTotals();
+                    if (currentYear) await loadMonthTotals(currentYear);
+                    if (currentYear && currentMonthIndex !== null) await loadWeekTotals(currentYear, currentMonthIndex + 1);
+                    if (currentYear && currentMonthIndex !== null && currentWeekNumber) await loadDayTotals(currentYear, currentMonthIndex + 1, currentWeekNumber);
+                } catch (e) {
+                    console.error('Error guardando los totales del día:', e);
+                }
 
                 setTimeout(() => {
                     modalSpinner.classList.add('hidden');
@@ -1882,216 +822,299 @@
                 }, 1000);
             });
 
-            // Manejar el botón de cerrar modal
             closeModalBtn.addEventListener('click', () => {
                 resumenModal.style.display = 'none';
                 body.style.overflow = 'auto';
             });
 
-            // Función para alternar la visibilidad de la columna
-            const toggleColumn = (viewElement, className) => {
-                viewElement.classList.toggle(className);
-            };
-
-            // Event listener para el botón de precio
             togglePrecioBtn.addEventListener('click', () => {
-                const arrow = togglePrecioBtn.querySelector('svg');
-                toggleColumn(mananaView, 'show-precio');
-                toggleColumn(tardeView, 'show-precio');
-                arrow.classList.toggle('rotate-180');
+                togglePrecioBtn.querySelector('svg').classList.toggle('rotate-180');
+                mananaView.classList.toggle('show-precio');
+                tardeView.classList.toggle('show-precio');
             });
 
-            // Event listener para el botón de ganancia
             toggleGananciaBtn.addEventListener('click', () => {
-                const arrow = toggleGananciaBtn.querySelector('svg');
-                toggleColumn(mananaView, 'show-ganancia');
-                toggleColumn(tardeView, 'show-ganancia');
-                arrow.classList.toggle('rotate-180');
+                toggleGananciaBtn.querySelector('svg').classList.toggle('rotate-180');
+                mananaView.classList.toggle('show-ganancia');
+                tardeView.classList.toggle('show-ganancia');
             });
 
-            // Manejador de eventos para los años
-            yearList.addEventListener('click', (event) => {
-                const yearItem = event.target.closest('.year-item');
-                if (yearItem) {
-                    currentYear = yearItem.dataset.year;
-                    monthlyTitle.textContent = `Ganancias de ${currentYear}`;
+            // Vistas Historial (Eventos click)
+            document.getElementById('year-list').addEventListener('click', (e) => {
+                const item = e.target.closest('.year-item');
+                if (item) {
+                    currentYear = item.dataset.year;
+                    document.getElementById('monthly-title').textContent = `Ganancias de ${currentYear}`;
                     yearView.classList.add('hidden');
                     historialView.classList.remove('hidden');
                     loadMonthTotals(currentYear);
                 }
             });
 
-            // Manejador de eventos para los meses
-            monthlyList.addEventListener('click', (event) => {
-                const monthItem = event.target.closest('.month-item');
-                if (monthItem) {
-                    currentMonthName = monthItem.dataset.month;
-                    currentMonthIndex = parseInt(monthItem.dataset.monthIndex);
-                    weeklyTitle.textContent = `Ganancias de ${currentMonthName}`;
+            document.getElementById('monthly-list').addEventListener('click', (e) => {
+                const item = e.target.closest('.month-item');
+                if (item) {
+                    currentMonthName = item.dataset.month;
+                    currentMonthIndex = parseInt(item.dataset.monthIndex);
+                    document.getElementById('weekly-title').textContent = `Ganancias de ${currentMonthName}`;
                     historialView.classList.add('hidden');
                     weeklyView.classList.remove('hidden');
                     loadWeekTotals(currentYear, currentMonthIndex + 1);
                 }
             });
 
-            // Manejador de eventos para las semanas
-            weeklyList.addEventListener('click', (event) => {
-                const weekItem = event.target.closest('.week-item');
-                if (weekItem) {
-                    currentWeekNumber = parseInt(weekItem.dataset.week);
-                    dayTitle.textContent = `Ganancias de la Semana ${currentWeekNumber} - ${currentMonthName} de ${currentYear}`;
+            document.getElementById('weekly-list').addEventListener('click', (e) => {
+                const item = e.target.closest('.week-item');
+                if (item) {
+                    currentWeekNumber = parseInt(item.dataset.week);
+                    document.getElementById('day-title').textContent = `Ganancias de la Semana ${currentWeekNumber} - ${currentMonthName} de ${currentYear}`;
                     weeklyView.classList.add('hidden');
                     dayView.classList.remove('hidden');
+                    
+                    const dayList = document.getElementById('day-list');
                     dayList.innerHTML = '';
-                    // Determinar la fecha de inicio de la semana
                     const startDay = (currentWeekNumber - 1) * 7 + 1;
                     const startDate = new Date(currentYear, currentMonthIndex, startDay);
                     for (let i = 0; i < 7; i++) {
                         const currentDate = new Date(startDate);
                         currentDate.setDate(startDate.getDate() + i);
-                        if (currentDate.getMonth() !== currentMonthIndex) {
-                            break;
-                        }
-                        const dayName = daysOfWeek[currentDate.getDay()];
-                        const dateNumber = currentDate.getDate();
+                        if (currentDate.getMonth() !== currentMonthIndex) break;
+                        
                         const dayElement = document.createElement('div');
                         dayElement.className = 'flex justify-between items-center py-2 border-b border-gray-600 cursor-pointer day-item';
-                        dayElement.innerHTML = `
-                            <span class="font-medium">${dayName} ${dateNumber}</span>
-                            <span class="font-bold text-lg text-[#c3ff3d]">Q0</span>
-                        `;
+                        dayElement.innerHTML = `<span class="font-medium">${daysOfWeek[currentDate.getDay()]} ${currentDate.getDate()}</span><span class="font-bold text-lg text-[#c3ff3d]">Q0</span>`;
                         dayList.appendChild(dayElement);
                     }
-                    // Cargar totales de días
                     loadDayTotals(currentYear, currentMonthIndex + 1, currentWeekNumber);
                 }
             });
 
-            // Botón para volver de meses a años
-            backToYearsBtn.addEventListener('click', () => {
-                historialView.classList.add('hidden');
-                yearView.classList.remove('hidden');
+            document.getElementById('back-to-years-btn').addEventListener('click', () => {
+                historialView.classList.add('hidden'); yearView.classList.remove('hidden');
+            });
+            document.getElementById('back-to-months-btn').addEventListener('click', () => {
+                weeklyView.classList.add('hidden'); historialView.classList.remove('hidden');
+            });
+            document.getElementById('back-to-weeks-btn').addEventListener('click', () => {
+                dayView.classList.add('hidden'); weeklyView.classList.remove('hidden');
             });
 
-            // Botón para volver de semanas a meses
-            backToMonthsBtn.addEventListener('click', () => {
-                weeklyView.classList.add('hidden');
-                historialView.classList.remove('hidden');
-            });
-
-            // Botón para volver de días a semanas
-            backToWeeksBtn.addEventListener('click', () => {
-                dayView.classList.add('hidden');    // Oculta la vista de días
-                weeklyView.classList.remove('hidden'); // Muestra la vista de semanas
-            });
-
-            // --- INICIO: Guardado manual de resumen diario con confirmación (sin alertas del navegador) ---
-
-            // Event listener para el botón principal de guardar datos del día
-            btnGuardarDiario.addEventListener('click', () => {
-                confirmSaveModal.style.display = 'flex'; // Muestra el modal de confirmación
-                body.style.overflow = 'hidden'; // Evita el scroll del body mientras el modal está abierto
-            });
-
-            // Event listener para el botón "Guardar" dentro del modal de confirmación
-            confirmSaveBtn.addEventListener('click', async () => {
-                confirmSaveModal.style.display = 'none'; // Oculta el modal de confirmación
-                body.style.overflow = 'auto'; // Restaura el scroll del body
-
-                // Obtiene la fecha actual para el guardado
-                const now = new Date();
-                const year = now.getFullYear();
-                const month = now.getMonth() + 1; // Meses de 1 a 12
-                const day = now.getDate();
-                const week = Math.ceil(day / 7); // Calcula la semana del mes (1-5)
-
-                // Construye el ID del documento para el día específico en Firestore
-                const dayId = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const resumenRef = db.collection('historial').doc(`${year}`).collection(`${month}`).doc(`sem${week}`).collection('dias').doc(dayId);
-
-                // Calcula los totales de las vistas de mañana y tarde
-                const mananaTotals = updateViewTotals(mananaView);
-                const tardeTotals = updateViewTotals(tardeView);
-                const totalGanancia = mananaTotals.totalGanancia + tardeTotals.totalGanancia;
-
-                try {
-                    // Guarda o actualiza el documento en Firestore
-                    await resumenRef.set({
-                        year,
-                        month,
-                        week,
-                        day,
-                        totalGanancia,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp() // Sello de tiempo del servidor
-                    });
-                    // Ya no hay alerta de éxito
-
-                    // Recarga los totales del historial para que el nuevo guardado sea visible
-                    await loadYearTotals();
-                    if (currentYear) await loadMonthTotals(currentYear);
-                    if (currentYear && currentMonthIndex !== null) await loadWeekTotals(currentYear, currentMonthIndex + 1);
-                    if (currentYear && currentMonthIndex !== null && currentWeekNumber) await loadDayTotals(currentYear, currentMonthIndex + 1, currentWeekNumber);
-
-                } catch (e) {
-                    console.error('Error guardando los totales del día:', e);
-                }
-            });
-
-            // Event listener para el botón "Cancelar" dentro del modal de confirmación
-            cancelSaveBtn.addEventListener('click', () => {
-                confirmSaveModal.style.display = 'none'; // Oculta el modal de confirmación
-                body.style.overflow = 'auto'; // Restaura el scroll del body
-            });
-            // --- FIN: Guardado manual de resumen diario con confirmación (sin alertas del navegador) ---
-
-
-            // --- INICIO: Borrado de datos de tabla actual con confirmación ---
+            // Borrar actual
             btnBorrarActual.addEventListener('click', () => {
-                confirmDeleteModal.style.display = 'flex'; // Muestra el modal de confirmación para borrar
-                body.style.overflow = 'hidden'; // Evita el scroll del body
+                confirmDeleteModal.style.display = 'flex';
+                body.style.overflow = 'hidden';
             });
 
             confirmDeleteBtn.addEventListener('click', async () => {
-                confirmDeleteModal.style.display = 'none'; // Oculta el modal de confirmación
-                body.style.overflow = 'auto'; // Restaura el scroll del body
+                confirmDeleteModal.style.display = 'none';
+                body.style.overflow = 'auto';
 
                 const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
-                const viewName = getViewName(activeView); // 'manana' o 'tarde'
+                const viewName = getViewName(activeView);
 
-                // Resetear todos los inputs de cantidad a vacío y actualizar subtotales
-                activeView.querySelectorAll('.subproduct-input').forEach(inp => {
-                    inp.value = "";
-                });
-                const quantityInputs = activeView.querySelectorAll('.cantidad-input');
-                quantityInputs.forEach(input => {
-                    input.value = ""; // Vacía el input
-                    input.dispatchEvent(new Event('input', { bubbles: true })); // Dispara el evento para recalcular
-                });
-                activeView.querySelectorAll('.product-row[data-has-subproducts="true"]').forEach(row => {
-                    recalculateSplitProductRow(row);
+                activeView.querySelectorAll('.cantidad-input').forEach(input => {
+                    input.value = "";
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
                 });
 
-                // Borrar los datos de la vista actual en Firestore
                 try {
-                    // Si el documento para la vista existe, lo actualizamos a un objeto vacío
-                    // para borrar todas las cantidades guardadas.
-                    // Usamos set({}) en lugar de delete() para mantener el documento si es necesario,
-                    // pero vaciar sus campos de cantidades.
                     await db.collection('ventas').doc(viewName).set({});
-                    console.log(`Datos de la tabla "${viewName}" borrados exitosamente en Firestore.`);
                 } catch (e) {
                     console.error(`Error borrando datos de la tabla "${viewName}" en Firestore:`, e);
                 }
             });
 
             cancelDeleteBtn.addEventListener('click', () => {
-                confirmDeleteModal.style.display = 'none'; // Oculta el modal de confirmación
-                body.style.overflow = 'auto'; // Restaura el scroll del body
+                confirmDeleteModal.style.display = 'none';
+                body.style.overflow = 'auto';
             });
-            // --- FIN: Borrado de datos de tabla actual con confirmación ---
 
-        }); // Cierra el DOMContentLoaded correctamente aquí.
+            // --- LÓGICA DE IA ---
+            const aiSourceModal = document.getElementById('ai-source-modal');
+            const aiLoadingOverlay = document.getElementById('ai-loading-overlay');
+            const aiFloatingBar = document.getElementById('ai-floating-bar');
+            let previousInputStates = {};
+
+            document.getElementById('btn-ia-camera').addEventListener('click', () => {
+                aiSourceModal.style.display = 'flex';
+                body.style.overflow = 'hidden';
+            });
+
+            document.getElementById('cancel-ai-source-btn').addEventListener('click', () => {
+                aiSourceModal.style.display = 'none';
+                body.style.overflow = 'auto';
+            });
+
+            document.getElementById('btn-take-photo').addEventListener('click', () => {
+                document.getElementById('camera-input').click();
+                aiSourceModal.style.display = 'none';
+                body.style.overflow = 'auto';
+            });
+
+            document.getElementById('btn-pick-gallery').addEventListener('click', () => {
+                document.getElementById('gallery-input').click();
+                aiSourceModal.style.display = 'none';
+                body.style.overflow = 'auto';
+            });
+
+            const processImage = (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const maxDim = 1024;
+                        if (width > maxDim || height > maxDim) {
+                            if (width > height) { height = Math.round((height * maxDim) / width); width = maxDim; } 
+                            else { width = Math.round((width * maxDim) / height); height = maxDim; }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const base64 = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+                        callGeminiAI(base64);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                event.target.value = ''; // Reset input
+            };
+
+            document.getElementById('camera-input').addEventListener('change', processImage);
+            document.getElementById('gallery-input').addEventListener('change', processImage);
+
+            async function callGeminiAI(base64) {
+                aiLoadingOverlay.style.display = 'flex';
+                body.style.overflow = 'hidden';
+
+                const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
+                const rows = activeView.querySelectorAll('.product-row');
+                let products = [];
+                rows.forEach(row => products.push(row.querySelector('.text-left').textContent.trim()));
+
+                const prompt = `Analiza esta imagen que contiene un inventario o conteo de panadería. Encuentra las cantidades de los siguientes productos: ${products.join(', ')}. Devuelve únicamente el JSON válido con el nombre del producto exacto. Si no tiene cantidad, pon 0.`;
+
+                const payload = {
+                    contents: [{
+                        role: "user",
+                        parts: [
+                            { text: prompt },
+                            { inlineData: { mimeType: "image/jpeg", data: base64 } }
+                        ]
+                    }],
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                cantidades: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            producto: { type: "STRING" },
+                                            cantidad: { type: "NUMBER" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+                let retries = 0;
+                const maxRetries = 5;
+                const delays = [1000, 2000, 4000, 8000, 16000];
+                let resultJson = null;
+
+                while (retries < maxRetries) {
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (!response.ok) throw new Error("API fail");
+                        const data = await response.json();
+                        const textContent = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                        resultJson = JSON.parse(textContent);
+                        break;
+                    } catch (e) {
+                        retries++;
+                        if (retries >= maxRetries) break;
+                        await new Promise(r => setTimeout(r, delays[retries - 1]));
+                    }
+                }
+
+                aiLoadingOverlay.style.display = 'none';
+                body.style.overflow = 'auto';
+
+                if (resultJson && resultJson.cantidades) {
+                    applyAiData(resultJson.cantidades, activeView);
+                }
+            }
+
+            function applyAiData(cantidadesArray, activeView) {
+                previousInputStates = {}; 
+                const rows = activeView.querySelectorAll('.product-row');
+                const amountsMap = {};
+                cantidadesArray.forEach(item => {
+                    amountsMap[item.producto.toLowerCase()] = item.cantidad;
+                });
+
+                rows.forEach((row, index) => {
+                    const name = row.querySelector('.text-left').textContent.trim().toLowerCase();
+                    const input = row.querySelector('.cantidad-input');
+                    previousInputStates[index] = input.value; 
+
+                    if (amountsMap[name] !== undefined && amountsMap[name] !== 0) {
+                        input.value = amountsMap[name];
+                        input.classList.add('ai-highlight'); 
+                        input.dispatchEvent(new Event('input', { bubbles: true })); 
+                    }
+                });
+
+                aiFloatingBar.classList.remove('hidden');
+                aiFloatingBar.classList.add('flex');
+            }
+
+            document.getElementById('ai-cancelar').addEventListener('click', () => {
+                const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
+                activeView.querySelectorAll('.product-row').forEach((row, index) => {
+                    const input = row.querySelector('.cantidad-input');
+                    if (previousInputStates[index] !== undefined) {
+                        input.value = previousInputStates[index];
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                    input.classList.remove('ai-highlight');
+                });
+                aiFloatingBar.classList.add('hidden');
+                aiFloatingBar.classList.remove('flex');
+                previousInputStates = {};
+            });
+
+            document.getElementById('ai-guardar').addEventListener('click', () => {
+                const activeView = mananaView.classList.contains('hidden') ? tardeView : mananaView;
+                activeView.querySelectorAll('.product-row').forEach(row => {
+                    row.querySelector('.cantidad-input').classList.remove('ai-highlight');
+                });
+                saveProductQuantities(activeView);
+
+                aiFloatingBar.classList.add('hidden');
+                aiFloatingBar.classList.remove('flex');
+                previousInputStates = {};
+            });
+            // --- FIN LÓGICA DE IA ---
+
+        });
     </script>
 </body>
-
 </html>
